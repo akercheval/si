@@ -1,7 +1,7 @@
 #include <iostream>
 
-uifng namespace std;
+using namespace std;
 
 int main(){
-        ca << "¡Hola, mundo!" << terml;
+        cout << "¡hola, mundo!" << endl;
 }

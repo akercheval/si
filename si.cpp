@@ -1,6 +1,5 @@
 #include <iostream>
 #include <fstream>
-#include <sstream>
 
 using namespace std;
 
@@ -8,134 +7,240 @@ int main()
 {
         ofstream outfile;
         outfile.open("holamundo.cpp");
-        
-        string temp;
+
         string word;
+        struct end_word {
+                bool valid;
+                char c;
+        } end_word;
 
-        while (getline(cin, temp, '\n')) {
-                /* include, using, namespace */
-                while(temp.find("incluir") != string::npos) {
-                        temp.replace(temp.find("incluir"), 7, "include");
+        while (cin >> word) {
+                end_word.valid = 0;
+                if (!isalnum(word.front()) && (word.size() > 1)) {
+                        outfile << word.front();
+                        word.erase(0,1);
                 }
-                while(temp.find("usando") != string::npos) {
-                        temp.replace(temp.find("usando"), 6, "using");
+                if (!isalnum(word.back()) && (word.size() > 1)) {
+                        end_word.valid = 1;
+                        end_word.c = word.back();
+                        word.pop_back();
                 }
-                while(temp.find("nombres") != string::npos) {
-                        temp.replace(temp.find("nombres"), 7, "namespace");
-                }
-                
+
                 /* general data types */
-                while(temp.find("carác") != string::npos) {
-                        temp.replace(temp.find("carác"), 7, "char");
-                }
-                while(temp.find("palab") != string::npos) {
-                        temp.replace(temp.find("palab"), 5, "string");
-                }
-                while(temp.find("archivo") != string::npos) {
-                        temp.replace(temp.find("archivo"), 7, "FILE");
-                }
-                while(temp.find("larg") != string::npos) {
-                        temp.replace(temp.find("larg"), 4, "larg");
-                }
-                while(temp.find("flot") != string::npos) {
-                        temp.replace(temp.find("flot"), 4, "float");
-                }
-                while(temp.find("doble") != string::npos) {
-                        temp.replace(temp.find("doble"), 5, "double");
-                }
+                if (word == "carác")
+                        outfile << "char";
+                else if (word == "palab")
+                        outfile << "string";
+                else if (word == "archivo")
+                        outfile << "file";
+                else if (word == "ARCHIVO")
+                        outfile << "FILE";
+                else if (word == "larg")
+                        outfile << "long";
+                else if (word == "flot")
+                        outfile << "float";
+                else if (word == "doble")
+                        outfile << "double";
+               
+                /* flow control */
+                else if (word == "si")
+                        outfile << "if";
+                else if (word == "si_no")
+                        outfile << "else";
+                else if (word == "para")
+                        outfile << "for";
+                else if (word == "mientras")
+                        outfile << "while";
+                else if (word == "haz")
+                        outfile << "do";
+                else if (word == "romper")
+                        outfile << "break";
+                else if (word == "continuar")
+                        outfile << "continue";
+                else if (word == "interr")
+                        outfile << "switch";
+                else if (word == "caso")
+                        outfile << "case";
+
                 
-                /*flow control */
-                while(temp.find("si") != string::npos) {
-                        temp.replace(temp.find("si"), 2, "if");
-                }
-                while(temp.find("si_no") != string::npos) {
-                        temp.replace(temp.find("si_no"), 5, "else");
-                }
-                while(temp.find("para") != string::npos) {
-                        temp.replace(temp.find("para"), 4, "for");
-                }
-                while(temp.find("mientras") != string::npos) {
-                        temp.replace(temp.find("mientras"), 8, "while");
-                }
-                while(temp.find("haz") != string::npos) {
-                        temp.replace(temp.find("haz"), 3, "do");
-                }
-                while(temp.find("romper") != string::npos) {
-                        temp.replace(temp.find("romper"), 5, "break");
-                }
-                while(temp.find("continuar") != string::npos) {
-                        temp.replace(temp.find("continuar"), 9, "continue");
-                }
-                while(temp.find("interr") != string::npos) {
-                        temp.replace(temp.find("interr"), 6, "switch");
-                }
-                while(temp.find("caso") != string::npos) {
-                        temp.replace(temp.find("caso"), 4, "case");
-                }
-                while(temp.find("larg") != string::npos) {
-                        temp.replace(temp.find("larg"), 4, "larg");
-                }
-
                 /* assert.h */
-                while(temp.find("afirma") != string::npos) {
-                        temp.replace(temp.find("afirma"), 6, "assert");
-                }
-
+                else if (word == "afirma")
+                        outfile << "assert";
+                
                 /* ctype.h */
-                while(temp.find("esalnum") != string::npos) {
-                        temp.replace(temp.find("esalnum"), 7, "isalnum");
-                }
-                while(temp.find("esalfa") != string::npos) {
-                        temp.replace(temp.find("esalfa"), 6, "isapha");
-                }
-                while(temp.find("esvacio") != string::npos) {
-                        temp.replace(temp.find("esvacio"), 7, "isblank");
-                }
-                while(temp.find("escntrl") != string::npos) {
-                        temp.replace(temp.find("escntrl"), 7, "iscntrl");
-                }
-                while(temp.find("esdec") != string::npos) {
-                        temp.replace(temp.find("esdec"), 5, "isdec");
-                }
-                while(temp.find("esgraf") != string::npos) {
-                        temp.replace(temp.find("esgraf"), 6, "isgraph");
-                }
-                while(temp.find("esminúsc") != string::npos) {
-                        temp.replace(temp.find("esminúsc"), 9, "islower");
-                }
-                while(temp.find("esimprim") != string::npos) {
-                        temp.replace(temp.find("isprint"), 7, "esimprim");
-                }
-                while(temp.find("espunt") != string::npos) {
-                        temp.replace(temp.find("espunt"), 6, "ispunct");
-                }
-                while(temp.find("esespac") != string::npos) {
-                        temp.replace(temp.find("esespac"), 7, "isspace");
-                }
-                while(temp.find("esmayúsc") != string::npos) {
-                        temp.replace(temp.find("esmayúsc"), 9, "isupper");
-                }
-                while(temp.find("eshexa") != string::npos) {
-                        temp.replace(temp.find("eshexa"), 6, "ishexdigit");
-                }
-                while(temp.find("aminúsc") != string::npos) {
-                        temp.replace(temp.find("aminúsc"), 8, "tolower");
-                }
-                while(temp.find("amayúsc") != string::npos) {
-                        temp.replace(temp.find("amayúsc"), 8, "toupper");
-                }
+                else if (word == "esalnum")
+                        outfile << "isalpha";
+                else if (word == "esalfa")
+                        outfile << "isalpha";
+                else if (word == "esvacio")
+                        outfile << "isblank";
+                else if (word == "escntrl")
+                        outfile << "iscntrl";
+                else if (word == "esdec")
+                        outfile << "isdigit";
+                else if (word == "esgraf")
+                        outfile << "isgraph";
+                else if (word == "esminúsc")
+                        outfile << "islower";
+                else if (word == "esimprim")
+                        outfile << "isprint";
+                else if (word == "espunt")
+                        outfile << "ispunct";
+                else if (word == "esespac")
+                        outfile << "isspace";
+                else if (word == "esmayúsc")
+                        outfile << "isupper";
+                else if (word == "eshexa")
+                        outfile << "isxdigit";
+                else if (word == "aminúsc")
+                        outfile << "tolower";
+                else if (word == "amayúsc")
+                        outfile << "toupper";
 
                 /* errno.h */
-                while(temp.find("errnum") != string::npos) {
-                        temp.replace(temp.find("errnum"), 6, "errno");
+                else if (word == "errnum")
+                        outfile << "errno";
+
+                /* iso646.h */
+                else if (word == "y")
+                        outfile << "and";
+                else if (word == "y_ig")
+                        outfile << "and_eq";
+                else if (word == "bit_y")
+                        outfile << "bitand";
+                else if (word == "bit_o")
+                        outfile << "bitor";
+                else if (word == "no")
+                        outfile << "not";
+                else if (word == "no_ig")
+                        outfile << "not_eq";
+                else if (word == "o")
+                        outfile << "or";
+                else if (word == "o_ig")
+                        outfile << "or_eq";
+                else if (word == "oex")
+                        outfile << "xor";
+                else if (word == "oex_ig")
+                        outfile << "xor_eq";
+                
+                /* math.h */
+                else if (word == "seno")
+                        outfile << "sin";
+                else if (word == "asen")
+                        outfile << "asin";
+                else if (word == "senh")
+                        outfile << "sinh";
+                else if (word == "asenh")
+                        outfile << "asinh";
+                else if (word == "log1m")
+                        outfile << "log1p";
+                else if (word == "pot")
+                        outfile << "pow";
+                else if (word == "rzcd")
+                        outfile << "sqrt";
+                else if (word == "rzcb")
+                        outfile << "cbrt";
+                else if (word == "hipot")
+                        outfile << "hypot";
+                else if (word == "tope")
+                        outfile << "ceil";
+                else if (word == "suelo")
+                        outfile << "floor";
+                else if (word == "redond")
+                        outfile << "round";
+                else if (word == "lredond")
+                        outfile << "lround";
+                else if (word == "llredond")
+                        outfile << "llround";
+                else if (word == "cercaint")
+                        outfile << "nearbyint";
+                else if (word == "resto")
+                        outfile << "remainder";
+                else if (word == "rescoc")
+                        outfile << "remquo";
+                else if (word == "copsigno")
+                        outfile << "copysign";
+                else if (word == "non")
+                        outfile << "nan";
+                else if (word == "siguiente")
+                        outfile << "nextafter";
+                else if (word == "sig_a")
+                        outfile << "nexttoward";
+                else if (word == "fdif")
+                        outfile << "fdim";
+                else if (word == "fms")
+                        outfile << "fma";
+                else if (word == "fpclas")
+                        outfile << "fpclassify";
+                else if (word == "esfinito")
+                        outfile << "isfinite";
+                else if (word == "esinfinito")
+                        outfile << "isinf";
+                else if (word == "esnon")
+                        outfile << "isnan";
+                else if (word == "esnormal")
+                        outfile << "isnormal";
+                else if (word == "signobit")
+                        outfile << "signbit";
+                else if (word == "esmás")
+                        outfile << "isgreater";
+                else if (word == "ismásigual")
+                        outfile << "isgreaterequal";
+                else if (word == "esmenos")
+                        outfile << "isless";
+                else if (word == "esmenosigual")
+                        outfile << "islessequal";
+                else if (word == "esmásmenos")
+                        outfile << "islessgreater";
+                else if (word == "esnoordenado")
+                        outfile << "isunordered";
+                else if (word == "INFINITO")
+                        outfile << "INFINITY";
+                else if (word == "NON")
+                        outfile << "NAN";
+                else if (word == "GRANDE")
+                        outfile << "HUGE_VAL";
+                else if (word == "GRANDEF")
+                        outfile << "HUGE_VALF";
+                else if (word == "GRANDEL")
+                        outfile << "HUGE_VALL";
+                
+
+                /* etc */
+                if (word == "incluir")
+                        outfile << "include";
+                else if (word == "usando")
+                        outfile << "using";
+                else if (word == "nombres")
+                        outfile << "namespace";
+                else if (word == "ca")
+                        outfile << "cout";
+                else if (word == "terml")
+                        outfile << "endl";
+                
+                else
+                        outfile << word;
+                
+                if (end_word.valid) {
+                        end_word.valid = 0;
+                        outfile << end_word.c;
                 }
-
-                outfile << temp;
-                outfile << endl;
+                
+                while(isspace(cin.peek())){
+                        while(cin.peek() == ' '){
+                                outfile << ' ';
+                                cin.get();
+                        }
+                        while(cin.peek() == '\t'){
+                                outfile << "\t";
+                                cin.get();
+                        }
+                        while(cin.peek() == '\n'){
+                                outfile << endl;
+                                cin.get();
+                        }
+                }
         }
-
         outfile.close();
-
         return 0;
 }
-
