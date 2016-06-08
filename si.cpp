@@ -27,7 +27,7 @@ int main()
                 }
 
                 /* general data types */
-                if (word == "car·c")
+                if (word == "car√°c")
                         outfile << "char";
                 else if (word == "palab")
                         outfile << "string";
@@ -80,7 +80,7 @@ int main()
                         outfile << "isdigit";
                 else if (word == "esgraf")
                         outfile << "isgraph";
-                else if (word == "esmin˙sc")
+                else if (word == "esmin√∫sc")
                         outfile << "islower";
                 else if (word == "esimprim")
                         outfile << "isprint";
@@ -88,13 +88,13 @@ int main()
                         outfile << "ispunct";
                 else if (word == "esespac")
                         outfile << "isspace";
-                else if (word == "esmay˙sc")
+                else if (word == "esmay√∫sc")
                         outfile << "isupper";
                 else if (word == "eshexa")
                         outfile << "isxdigit";
-                else if (word == "amin˙sc")
+                else if (word == "amin√∫sc")
                         outfile << "tolower";
-                else if (word == "amay˙sc")
+                else if (word == "amay√∫sc")
                         outfile << "toupper";
 
                 /* errno.h */
@@ -182,7 +182,7 @@ int main()
                         outfile << "isnormal";
                 else if (word == "signobit")
                         outfile << "signbit";
-                else if (word == "esm√°s")
+                else if (word == "esm√É¬°s")
                         outfile << "isgreater";
                 else if (word == "ism√°sigual")
                         outfile << "isgreaterequal";
@@ -212,7 +212,7 @@ int main()
                         outfile << "setjmp";
 
                 /* signal.h */
-                else if (word == "seÒal")
+                else if (word == "se√±al")
                         outfile << "signal";
                 else if (word == "elevar")
                         outfile << "raise";
@@ -220,9 +220,9 @@ int main()
                 /* stddef.h */
                 else if (word == "ptodif_t")
                         outfile << "ptrdiff_t";
-                else if (word == "tamaÒo_t")
+                else if (word == "tama√±o_t")
                         outfile << "size_t";
-                else if (word == "m·x_nivel_t")
+                else if (word == "m√°x_nivel_t")
                         outfile << "max_align_t";
                 else if (word == "nulopto_t")
                         outfile << "nullptr_t";
@@ -290,13 +290,13 @@ int main()
                         outfile << "fputs";
                 else if (word == "sacac")
                         outfile << "getc";
-                else if (word == "sacacar·c")
+                else if (word == "sacacar√°c")
                         outfile << "getchar";
                 else if (word == "sacas")
                         outfile << "gets";
                 else if (word == "ponc")
                         outfile << "putc";
-                else if (word == "poncar·c")
+                else if (word == "poncar√°c")
                         outfile << "putchar";
                 else if (word == "pons")
                         outfile << "puts";
