@@ -80,7 +80,7 @@ int main()
                         outfile << "isdigit";
                 else if (word == "esgraf")
                         outfile << "isgraph";
-                else if (word == "esminÃºsc")
+                else if (word == "esminúsc")
                         outfile << "islower";
                 else if (word == "esimprim")
                         outfile << "isprint";
@@ -88,13 +88,13 @@ int main()
                         outfile << "ispunct";
                 else if (word == "esespac")
                         outfile << "isspace";
-                else if (word == "esmayÃºsc")
+                else if (word == "esmayúsc")
                         outfile << "isupper";
                 else if (word == "eshexa")
                         outfile << "isxdigit";
-                else if (word == "aminÃºsc")
+                else if (word == "aminúsc")
                         outfile << "tolower";
-                else if (word == "amayÃºsc")
+                else if (word == "amayúsc")
                         outfile << "toupper";
 
                 /* errno.h */
@@ -204,6 +204,124 @@ int main()
                         outfile << "HUGE_VALF";
                 else if (word == "GRANDEL")
                         outfile << "HUGE_VALL";
+                
+                /* setjmp.h */
+                else if (word == "brinclg")
+                        outfile << "longjmp";
+                else if (word == "ponbrinc")
+                        outfile << "setjmp";
+
+                /* signal.h */
+                else if (word == "señal")
+                        outfile << "signal";
+                else if (word == "elevar")
+                        outfile << "raise";
+
+                /* stddef.h */
+                else if (word == "ptodif_t")
+                        outfile << "ptrdiff_t";
+                else if (word == "tamaño_t")
+                        outfile << "size_t";
+                else if (word == "máx_nivel_t")
+                        outfile << "max_align_t";
+                else if (word == "nulopto_t")
+                        outfile << "nullptr_t";
+                else if (word == "compensadode")
+                        outfile << "offsetof";
+                else if (word == "NULO")
+                        outfile << "NULL";
+
+                /* stdio.h */
+                else if (word == "quitar")
+                        outfile << "remove";
+                else if (word == "renombrar")
+                        outfile << "rename";
+                else if (word == "archivotmp")
+                        outfile << "tmpfile";
+                else if (word == "nombretmp")
+                        outfile << "tmpnam";
+                else if (word == "fcerrar")
+                        outfile << "fclose";
+                else if (word == "fdescarg")
+                        outfile << "fflush";
+                else if (word == "fabrir")
+                        outfile << "fopen";
+                else if (word == "freopen")
+                        outfile << "freabrir";
+                else if (word == "ponguarda")
+                        outfile << "setbuf";
+                else if (word == "ponvguarda")
+                        outfile << "setvbuf";
+                else if (word == "fimprimaf")
+                        outfile << "fprintf";
+                else if (word == "fescanf")
+                        outfile << "fscanf";
+                else if (word == "imprimaf")
+                        outfile << "printf";
+                else if (word == "escanf")
+                        outfile << "scanf";
+                else if (word == "snimprimaf")
+                        outfile << "snprintf";
+                else if (word == "simprimaf")
+                        outfile << "sprintf";
+                else if (word == "sescanf")
+                        outfile << "sscanf";
+                else if (word == "vfimprimaf")
+                        outfile << "vfprintf";
+                else if (word == "vfescanf")
+                        outfile << "vfscanf";
+                else if (word == "vimprimaf")
+                        outfile << "vprintf";
+                else if (word == "vescanf")
+                        outfile << "vscanf";
+                else if (word == "vsnimprimaf")
+                        outfile << "vsnprintf";
+                else if (word == "vsimprimaf")
+                        outfile << "vsprintf";
+                else if (word == "vsescanf")
+                        outfile << "vsscanf";
+                else if (word == "fsacac")
+                        outfile << "fgetc";
+                else if (word == "fsacas")
+                        outfile << "fgets";
+                else if (word == "fponc")
+                        outfile << "fputc";
+                else if (word == "fpons")
+                        outfile << "fputs";
+                else if (word == "sacac")
+                        outfile << "getc";
+                else if (word == "sacacarác")
+                        outfile << "getchar";
+                else if (word == "sacas")
+                        outfile << "gets";
+                else if (word == "ponc")
+                        outfile << "putc";
+                else if (word == "poncarác")
+                        outfile << "putchar";
+                else if (word == "pons")
+                        outfile << "puts";
+                else if (word == "dessacac")
+                        outfile << "ungetc";
+                else if (word == "fleer")
+                        outfile << "fread";
+                else if (word == "fescribir")
+                        outfile << "fwrite";
+                else if (word == "fsacapos")
+                        outfile << "fgetpos";
+                else if (word == "fbusc")
+                        outfile << "fseek";
+                else if (word == "fponpos")
+                        outfile << "fsetpos";
+                else if (word == "fdecir")
+                        outfile << "ftell";
+                else if (word == "rebob")
+                        outfile << "rewind";
+                else if (word == "quitaerr")
+                        outfile << "clearerr";
+                else if (word == "ffda")
+                        outfile << "feof";
+                else if (word == "ierror")
+                        outfile << "perror";
                 
 
                 /* etc */
