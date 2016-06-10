@@ -221,7 +221,7 @@ int main()
                         outfile << "isnormal";
                 else if (word == "signobit")
                         outfile << "signbit";
-                else if (word == "esmÃ¡s")
+                else if (word == "esmás")
                         outfile << "isgreater";
                 else if (word == "ismásigual")
                         outfile << "isgreaterequal";
