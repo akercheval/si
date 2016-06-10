@@ -1,5 +1,6 @@
 #include <iostream>
 #include <fstream>
+#include <vector>
 
 using namespace std;
 
@@ -8,11 +9,16 @@ int main()
         ofstream outfile;
         outfile.open("holamundo.cpp");
 
-        string word;
+        int i;
+        string word, tempword;
         struct end_word {
                 bool valid;
-                char c;
+                vector<char> cvec;
         } end_word;
+        struct multi_word {
+                vector<string> wvec;
+                vector<string> symvec;
+        } multi_word;
 
         while (cin >> word) {
                 end_word.valid = 0;
@@ -20,9 +26,20 @@ int main()
                         outfile << word.front();
                         word.erase(0,1);
                 }
+                /* this needs work. see algorithm on lenovo. */
+
+                for(i = 0; i < word.length(); i++) {
+                        if(!isalnum(word[i]) && (!isspace(word[i]))
+                           && word[i] != '_') {
+                                tempword = word.substr(0,i);
+                                word.erase(0,i);
+                                multi_word.wvec.push_back(tempword);
+                        }
+                }
+
                 if (!isalnum(word.back()) && (word.size() > 1)) {
                         end_word.valid = 1;
-                        end_word.c = word.back();
+                        end_word.cvec.push_back(word.back());
                         word.pop_back();
                 }
 
@@ -699,7 +716,8 @@ int main()
                 
                 if (end_word.valid) {
                         end_word.valid = 0;
-                        outfile << end_word.c;
+                        outfile << end_word.cvec.back();
+                        end_word.cvec.pop_back();
                 }
                 
                 while(isspace(cin.peek())){
