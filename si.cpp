@@ -11,10 +11,11 @@ int main()
 
         unsigned long i = 0;
         string word, tempword;
-        struct end_word {
+        /*struct end_word {
                 bool valid;
                 vector<char> cvec;
         } end_word;
+        */
 
         struct multi_word {
                 vector<string> wvec;
@@ -22,7 +23,7 @@ int main()
         } multi_word;
 
         while (cin >> word) {
-                end_word.valid = 0;
+        //        end_word.valid = 0;
                 while (!isalnum(word.front()) && (word.size() > 1)) {
                         outfile << word.front();
                         word.erase(0,1);
@@ -36,7 +37,7 @@ int main()
                  */
                 while (i != word.length()) {
                         if(!isalnum(word[i]) && (!isspace(word[i])) 
-                           && word[i] != '_') {               
+                           && word[i] != '_') {             
                                 tempword = word.substr(0,i);  
                                 word.erase(0,i);
                                 multi_word.wvec.push_back(tempword);
@@ -44,6 +45,7 @@ int main()
                                 while (!isalnum(word[i]) && !isspace(word[i])) 
                                         i++;
                                 tempword = word.substr(0,i);
+                                word.erase(0,i);
                                 multi_word.symvec.push_back(tempword);
                                 i = 0;
                                 continue;
@@ -738,11 +740,11 @@ int main()
                         }
                 }
 
-                if (end_word.valid) {
+                /*if (end_word.valid) {
                         end_word.valid = 0;
                         outfile << end_word.cvec.back();
                         end_word.cvec.pop_back();
-                }
+                }*/
                 
                 while(isspace(cin.peek())){
                         while(cin.peek() == ' '){
