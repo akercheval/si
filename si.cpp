@@ -4,28 +4,27 @@
 
 using namespace std;
 
-int main()
+int main(int argc, char* argv[])
 {
-        ofstream outfile;
-        outfile.open("holamundo.cpp");
+        if (argc < 2) {
+                cerr << "Provide file to translate" << endl;
+                exit(EXIT_FAILURE);
+        }
+        ifstream in(argv[1]);
+        ofstream out(argv[2]);
+//        out.open();
 
         unsigned long i = 0;
         string word, tempword;
-        /*struct end_word {
-                bool valid;
-                vector<char> cvec;
-        } end_word;
-        */
 
         struct multi_word {
                 vector<string> wvec;
                 vector<string> symvec;
         } multi_word;
 
-        while (cin >> word) {
-        //        end_word.valid = 0;
+        while (in >> word) {
                 while (!isalnum(word.front()) && (word.size() > 1)) {
-                        outfile << word.front();
+                        out << word.front();
                         word.erase(0,1);
                 }
 
@@ -57,710 +56,697 @@ int main()
                 while (!multi_word.wvec.empty()) {
                         word = multi_word.wvec.front();
                         multi_word.wvec.erase(multi_word.wvec.begin());
-                /*
-                if (!isalnum(word.back()) && (word.size() > 1)) {
-                        end_word.valid = 1;
-                        end_word.cvec.push_back(word.back());
-                        word.pop_back();
-                }
-                */
 
                         /* etc */
                         if (word == "incluir")
-                                outfile << "include";
+                                out << "include";
                         else if (word == "usando")
-                                outfile << "using";
+                                out << "using";
                         else if (word == "nombres")
-                                outfile << "namespace";
+                                out << "namespace";
                         else if (word == "defina")
-                                outfile << "define";
+                                out << "define";
                         else if (word == "sinodef")
-                                outfile << "ifndef";
+                                out << "ifndef";
                         else if (word == "termsi")
-                                outfile << "endif";
+                                out << "endif";
                         else if (word == "salir")
-                                outfile << "exit";
+                                out << "exit";
                         else if (word == "volver")
-                                outfile << "return";
+                                out << "return";
                         
                         /* general data types */
                         else if (word == "carác")
-                                outfile << "char";
+                                out << "char";
                         else if (word == "palab")
-                                outfile << "string";
+                                out << "string";
                         else if (word == "archivo")
-                                outfile << "file";
+                                out << "file";
                         else if (word == "ARCHIVO")
-                                outfile << "FILE";
+                                out << "FILE";
                         else if (word == "larg")
-                                outfile << "long";
+                                out << "long";
                         else if (word == "flot")
-                                outfile << "float";
+                                out << "float";
                         else if (word == "doble")
-                                outfile << "double";
+                                out << "double";
                         else if (word == "Class")
-                                outfile << "Clase";
+                                out << "Clase";
                         else if (word == "struct")
-                                outfile << "estruct";
+                                out << "estruct";
                        
                         /* flow control */
                         else if (word == "si")
-                                outfile << "if";
+                                out << "if";
                         else if (word == "si_no")
-                                outfile << "else";
+                                out << "else";
                         else if (word == "para")
-                                outfile << "for";
+                                out << "for";
                         else if (word == "mientras")
-                                outfile << "while";
+                                out << "while";
                         else if (word == "haz")
-                                outfile << "do";
+                                out << "do";
                         else if (word == "romper")
-                                outfile << "break";
+                                out << "break";
                         else if (word == "continuar")
-                                outfile << "continue";
+                                out << "continue";
                         else if (word == "interr")
-                                outfile << "switch";
+                                out << "switch";
                         else if (word == "caso")
-                                outfile << "case";
+                                out << "case";
 
                         
                         /* assert.h */
                         else if (word == "afirma")
-                                outfile << "assert";
+                                out << "assert";
                         
                         /* ctype.h */
                         else if (word == "esalnum")
-                                outfile << "isalpha";
+                                out << "isalpha";
                         else if (word == "esalfa")
-                                outfile << "isalpha";
+                                out << "isalpha";
                         else if (word == "esvacio")
-                                outfile << "isblank";
+                                out << "isblank";
                         else if (word == "escntrl")
-                                outfile << "iscntrl";
+                                out << "iscntrl";
                         else if (word == "esdec")
-                                outfile << "isdigit";
+                                out << "isdigit";
                         else if (word == "esgraf")
-                                outfile << "isgraph";
+                                out << "isgraph";
                         else if (word == "esminúsc")
-                                outfile << "islower";
+                                out << "islower";
                         else if (word == "esimprim")
-                                outfile << "isprint";
+                                out << "isprint";
                         else if (word == "espunt")
-                                outfile << "ispunct";
+                                out << "ispunct";
                         else if (word == "esespac")
-                                outfile << "isspace";
+                                out << "isspace";
                         else if (word == "esmayúsc")
-                                outfile << "isupper";
+                                out << "isupper";
                         else if (word == "eshexa")
-                                outfile << "isxdigit";
+                                out << "isxdigit";
                         else if (word == "aminúsc")
-                                outfile << "tolower";
+                                out << "tolower";
                         else if (word == "amayúsc")
-                                outfile << "toupper";
+                                out << "toupper";
 
                         /* errno.h */
                         else if (word == "errnum")
-                                outfile << "errno";
+                                out << "errno";
 
                         /* iso646.h */
                         else if (word == "y")
-                                outfile << "and";
+                                out << "and";
                         else if (word == "y_ig")
-                                outfile << "and_eq";
+                                out << "and_eq";
                         else if (word == "bit_y")
-                                outfile << "bitand";
+                                out << "bitand";
                         else if (word == "bit_o")
-                                outfile << "bitor";
+                                out << "bitor";
                         else if (word == "no")
-                                outfile << "not";
+                                out << "not";
                         else if (word == "no_ig")
-                                outfile << "not_eq";
+                                out << "not_eq";
                         else if (word == "o")
-                                outfile << "or";
+                                out << "or";
                         else if (word == "o_ig")
-                                outfile << "or_eq";
+                                out << "or_eq";
                         else if (word == "oex")
-                                outfile << "xor";
+                                out << "xor";
                         else if (word == "oex_ig")
-                                outfile << "xor_eq";
+                                out << "xor_eq";
                         
                         /* math.h */
                         else if (word == "seno")
-                                outfile << "sin";
+                                out << "sin";
                         else if (word == "asen")
-                                outfile << "asin";
+                                out << "asin";
                         else if (word == "senh")
-                                outfile << "sinh";
+                                out << "sinh";
                         else if (word == "asenh")
-                                outfile << "asinh";
+                                out << "asinh";
                         else if (word == "log1m")
-                                outfile << "log1p";
+                                out << "log1p";
                         else if (word == "pot")
-                                outfile << "pow";
+                                out << "pow";
                         else if (word == "rzcd")
-                                outfile << "sqrt";
+                                out << "sqrt";
                         else if (word == "rzcb")
-                                outfile << "cbrt";
+                                out << "cbrt";
                         else if (word == "hipot")
-                                outfile << "hypot";
+                                out << "hypot";
                         else if (word == "tope")
-                                outfile << "ceil";
+                                out << "ceil";
                         else if (word == "suelo")
-                                outfile << "floor";
+                                out << "floor";
                         else if (word == "redond")
-                                outfile << "round";
+                                out << "round";
                         else if (word == "lredond")
-                                outfile << "lround";
+                                out << "lround";
                         else if (word == "llredond")
-                                outfile << "llround";
+                                out << "llround";
                         else if (word == "cercaint")
-                                outfile << "nearbyint";
+                                out << "nearbyint";
                         else if (word == "resto")
-                                outfile << "remainder";
+                                out << "remainder";
                         else if (word == "rescoc")
-                                outfile << "remquo";
+                                out << "remquo";
                         else if (word == "copsigno")
-                                outfile << "copysign";
+                                out << "copysign";
                         else if (word == "non")
-                                outfile << "nan";
+                                out << "nan";
                         else if (word == "siguiente")
-                                outfile << "nextafter";
+                                out << "nextafter";
                         else if (word == "sig_a")
-                                outfile << "nexttoward";
+                                out << "nexttoward";
                         else if (word == "fdif")
-                                outfile << "fdim";
+                                out << "fdim";
                         else if (word == "fms")
-                                outfile << "fma";
+                                out << "fma";
                         else if (word == "fpclas")
-                                outfile << "fpclassify";
+                                out << "fpclassify";
                         else if (word == "esfinito")
-                                outfile << "isfinite";
+                                out << "isfinite";
                         else if (word == "esinfinito")
-                                outfile << "isinf";
+                                out << "isinf";
                         else if (word == "esnon")
-                                outfile << "isnan";
+                                out << "isnan";
                         else if (word == "esnormal")
-                                outfile << "isnormal";
+                                out << "isnormal";
                         else if (word == "signobit")
-                                outfile << "signbit";
+                                out << "signbit";
                         else if (word == "esmás")
-                                outfile << "isgreater";
+                                out << "isgreater";
                         else if (word == "ismásigual")
-                                outfile << "isgreaterequal";
+                                out << "isgreaterequal";
                         else if (word == "esmenos")
-                                outfile << "isless";
+                                out << "isless";
                         else if (word == "esmenosigual")
-                                outfile << "islessequal";
+                                out << "islessequal";
                         else if (word == "esmásmenos")
-                                outfile << "islessgreater";
+                                out << "islessgreater";
                         else if (word == "esnoordenado")
-                                outfile << "isunordered";
+                                out << "isunordered";
                         else if (word == "INFINITO")
-                                outfile << "INFINITY";
+                                out << "INFINITY";
                         else if (word == "NON")
-                                outfile << "NAN";
+                                out << "NAN";
                         else if (word == "GRANDE")
-                                outfile << "HUGE_VAL";
+                                out << "HUGE_VAL";
                         else if (word == "GRANDEF")
-                                outfile << "HUGE_VALF";
+                                out << "HUGE_VALF";
                         else if (word == "GRANDEL")
-                                outfile << "HUGE_VALL";
+                                out << "HUGE_VALL";
                         
                         /* setjmp.h */
                         else if (word == "brinclg")
-                                outfile << "longjmp";
+                                out << "longjmp";
                         else if (word == "ponbrinc")
-                                outfile << "setjmp";
+                                out << "setjmp";
 
                         /* signal.h */
                         else if (word == "señal")
-                                outfile << "signal";
+                                out << "signal";
                         else if (word == "elevar")
-                                outfile << "raise";
+                                out << "raise";
 
                         /* stddef.h */
                         else if (word == "ptodif_t")
-                                outfile << "ptrdiff_t";
+                                out << "ptrdiff_t";
                         else if (word == "tamaño_t")
-                                outfile << "size_t";
+                                out << "size_t";
                         else if (word == "máx_nivel_t")
-                                outfile << "max_align_t";
+                                out << "max_align_t";
                         else if (word == "nulopto_t")
-                                outfile << "nullptr_t";
+                                out << "nullptr_t";
                         else if (word == "compensadode")
-                                outfile << "offsetof";
+                                out << "offsetof";
                         else if (word == "NULO")
-                                outfile << "NULL";
+                                out << "NULL";
 
                         /* stdio.h */
                         else if (word == "quitar")
-                                outfile << "remove";
+                                out << "remove";
                         else if (word == "renombrar")
-                                outfile << "rename";
+                                out << "rename";
                         else if (word == "archivotmp")
-                                outfile << "tmpfile";
+                                out << "tmpfile";
                         else if (word == "nombretmp")
-                                outfile << "tmpnam";
+                                out << "tmpnam";
                         else if (word == "fcerrar")
-                                outfile << "fclose";
+                                out << "fclose";
                         else if (word == "fdescarg")
-                                outfile << "fflush";
+                                out << "fflush";
                         else if (word == "fabrir")
-                                outfile << "fopen";
+                                out << "fopen";
                         else if (word == "freopen")
-                                outfile << "freabrir";
+                                out << "freabrir";
                         else if (word == "ponguarda")
-                                outfile << "setbuf";
+                                out << "setbuf";
                         else if (word == "ponvguarda")
-                                outfile << "setvbuf";
+                                out << "setvbuf";
                         else if (word == "fimprimaf")
-                                outfile << "fprintf";
+                                out << "fprintf";
                         else if (word == "fescanf")
-                                outfile << "fscanf";
+                                out << "fscanf";
                         else if (word == "imprimaf")
-                                outfile << "printf";
+                                out << "printf";
                         else if (word == "escanf")
-                                outfile << "scanf";
+                                out << "scanf";
                         else if (word == "snimprimaf")
-                                outfile << "snprintf";
+                                out << "snprintf";
                         else if (word == "simprimaf")
-                                outfile << "sprintf";
+                                out << "sprintf";
                         else if (word == "sescanf")
-                                outfile << "sscanf";
+                                out << "sscanf";
                         else if (word == "vfimprimaf")
-                                outfile << "vfprintf";
+                                out << "vfprintf";
                         else if (word == "vfescanf")
-                                outfile << "vfscanf";
+                                out << "vfscanf";
                         else if (word == "vimprimaf")
-                                outfile << "vprintf";
+                                out << "vprintf";
                         else if (word == "vescanf")
-                                outfile << "vscanf";
+                                out << "vscanf";
                         else if (word == "vsnimprimaf")
-                                outfile << "vsnprintf";
+                                out << "vsnprintf";
                         else if (word == "vsimprimaf")
-                                outfile << "vsprintf";
+                                out << "vsprintf";
                         else if (word == "vsescanf")
-                                outfile << "vsscanf";
+                                out << "vsscanf";
                         else if (word == "fsacac")
-                                outfile << "fgetc";
+                                out << "fgetc";
                         else if (word == "fsacas")
-                                outfile << "fgets";
+                                out << "fgets";
                         else if (word == "fponc")
-                                outfile << "fputc";
+                                out << "fputc";
                         else if (word == "fpons")
-                                outfile << "fputs";
+                                out << "fputs";
                         else if (word == "sacac")
-                                outfile << "getc";
+                                out << "getc";
                         else if (word == "sacacarác")
-                                outfile << "getchar";
+                                out << "getchar";
                         else if (word == "sacas")
-                                outfile << "gets";
+                                out << "gets";
                         else if (word == "ponc")
-                                outfile << "putc";
+                                out << "putc";
                         else if (word == "poncarác")
-                                outfile << "putchar";
+                                out << "putchar";
                         else if (word == "pons")
-                                outfile << "puts";
+                                out << "puts";
                         else if (word == "dessacac")
-                                outfile << "ungetc";
+                                out << "ungetc";
                         else if (word == "fleer")
-                                outfile << "fread";
+                                out << "fread";
                         else if (word == "fescribir")
-                                outfile << "fwrite";
+                                out << "fwrite";
                         else if (word == "fsacapos")
-                                outfile << "fgetpos";
+                                out << "fgetpos";
                         else if (word == "fbusc")
-                                outfile << "fseek";
+                                out << "fseek";
                         else if (word == "fponpos")
-                                outfile << "fsetpos";
+                                out << "fsetpos";
                         else if (word == "fdecir")
-                                outfile << "ftell";
+                                out << "ftell";
                         else if (word == "rebob")
-                                outfile << "rewind";
+                                out << "rewind";
                         else if (word == "quitaerr")
-                                outfile << "clearerr";
+                                out << "clearerr";
                         else if (word == "ffda")
-                                outfile << "feof";
+                                out << "feof";
                         else if (word == "ierror")
-                                outfile << "perror";
+                                out << "perror";
                         
                         /* stdlib.h */
                         else if (word == "paadob")
-                                outfile << "atof";
+                                out << "atof";
                         else if (word == "paaint")
-                                outfile << "atoi";
+                                out << "atoi";
                         else if (word == "paall")
-                                outfile << "atoll";
+                                out << "atoll";
                         else if (word == "paladob")
-                                outfile << "strtod";
+                                out << "strtod";
                         else if (word == "palaflo")
-                                outfile << "strtof";
+                                out << "strtof";
                         else if (word == "palal")
-                                outfile << "strtol";
+                                out << "strtol";
                         else if (word == "palald")
-                                outfile << "strtold";
+                                out << "strtold";
                         else if (word == "palall")
-                                outfile << "strtoll";
+                                out << "strtoll";
                         else if (word == "palansl")
-                                outfile << "strtoul";
+                                out << "strtoul";
                         else if (word == "palansll")
-                                outfile << "strtoull";
+                                out << "strtoull";
                         else if (word == "aleat")
-                                outfile << "rand";
+                                out << "rand";
                         else if (word == "saleat")
-                                outfile << "srand";
+                                out << "srand";
                         else if (word == "casign")
-                                outfile << "calloc";
+                                out << "calloc";
                         else if (word == "lib")
-                                outfile << "free";
+                                out << "free";
                         else if (word == "masign")
-                                outfile << "malloc";
+                                out << "malloc";
                         else if (word == "reasign")
-                                outfile << "realloc";
+                                out << "realloc";
                         else if (word == "ensalir")
-                                outfile << "atexit";
+                                out << "atexit";
                         else if (word == "en_salir_rápido")
-                                outfile << "at_quick_exit";
+                                out << "at_quick_exit";
                         else if (word == "sistema")
-                                outfile << "system";
+                                out << "system";
                         else if (word == "_Salir")
-                                outfile << "_Exit";
+                                out << "_Exit";
                         else if (word == "bbusca")
-                                outfile << "bsearch";
+                                out << "bsearch";
                         else if (word == "rordena")
-                                outfile << "qsort";
+                                out << "qsort";
                         else if (word == "mbtam")
-                                outfile << "mblen";
+                                out << "mblen";
                         else if (word == "mbacl")
-                                outfile << "mbtowc";
+                                out << "mbtowc";
                         else if (word == "clamb")
-                                outfile << "wctomb";
+                                out << "wctomb";
                         else if (word == "mbaclpal")
-                                outfile << "mbtowcs";
+                                out << "mbtowcs";
                         else if (word == "clpalampbal")
-                                outfile << "wvstombs";
+                                out << "wvstombs";
                         else if (word == "SALIR_FRACASO")
-                                outfile << "EXIT_FAILURE";
+                                out << "EXIT_FAILURE";
                         else if (word == "SALIR_ÉXITO")
-                                outfile << "EXIT_SUCCESS";
+                                out << "EXIT_SUCCESS";
                         else if (word == "MB_TAM_MÁX")
-                                outfile << "MB_CUR_MAX";
+                                out << "MB_CUR_MAX";
                         else if (word == "NULO")
-                                outfile << "NULL";
+                                out << "NULL";
                         else if (word == "ALEATORIO_MÁX")
-                                outfile << "RAND_MAX";
+                                out << "RAND_MAX";
 
                         /* string.h */
                         else if (word == "copmem")
-                                outfile << "memcpy";
+                                out << "memcpy";
                         else if (word == "muevamem")
-                                outfile << "memmove";
+                                out << "memmove";
                         else if (word == "coppal")
-                                outfile << "strcpy";
+                                out << "strcpy";
                         else if (word == "copnpal")
-                                outfile << "strncpy";
+                                out << "strncpy";
                         else if (word == "catpal")
-                                outfile << "strcat";
+                                out << "strcat";
                         else if (word == "catnpal")
-                                outfile << "strncat";
+                                out << "strncat";
                         else if (word == "compmem")
-                                outfile << "memcmp";
+                                out << "memcmp";
                         else if (word == "comppal")
-                                outfile << "strcmp";
+                                out << "strcmp";
                         else if (word == "collpal")
-                                outfile << "strcoll";
+                                out << "strcoll";
                         else if (word == "compnpal")
-                                outfile << "strncmp";
+                                out << "strncmp";
                         else if (word == "xfrmpal")
-                                outfile << "strxfrm";
+                                out << "strxfrm";
                         else if (word == "memcarác")
-                                outfile << "memchr";
+                                out << "memchr";
                         else if (word == "palcarác")
-                                outfile << "strchr";
+                                out << "strchr";
                         else if (word == "alcancpal")
-                                outfile << "strcspn";
+                                out << "strcspn";
                         else if (word == "palcbusc")
-                                outfile << "strpbrk";
+                                out << "strpbrk";
                         else if (word == "pallcarác")
-                                outfile << "strrchr";
+                                out << "strrchr";
                         else if (word == "alcanpal")
-                                outfile << "strspn";
+                                out << "strspn";
                         else if (word == "palpal")
-                                outfile << "strstr";
+                                out << "strstr";
                         else if (word == "palsím")
-                                outfile << "strtok";
+                                out << "strtok";
                         else if (word == "mempon")
-                                outfile << "memset";
+                                out << "memset";
                         else if (word == "palerr")
-                                outfile << "strerr";
+                                out << "strerr";
                         else if (word == "paltamaño")
-                                outfile << "strlen";
+                                out << "strlen";
                         else if (word == "tamaño_t")
-                                outfile << "size_t";
+                                out << "size_t";
 
                         /* time.h */
                         else if (word == "reloj")
-                                outfile << "clock";
+                                out << "clock";
                         else if (word == "diftiempo")
-                                outfile << "difftime";
+                                out << "difftime";
                         else if (word == "haztiempo")
-                                outfile << "mktime";
+                                out << "mktime";
                         else if (word == "tiempo")
-                                outfile << "time";
+                                out << "time";
                         else if (word == "asctiempo")
-                                outfile << "asctime";
+                                out << "asctime";
                         else if (word == "ctiempo")
-                                outfile << "ctime";
+                                out << "ctime";
                         else if (word == "utctiempo")
-                                outfile << "gmtime";
+                                out << "gmtime";
                         else if (word == "tiempolocal")
-                                outfile << "localtime";
+                                out << "localtime";
                         else if (word == "TIC_POR_SEGUNDO")
-                                outfile << "CLOCKS_PER_SEC";
+                                out << "CLOCKS_PER_SEC";
                         else if (word == "reloj_t")
-                                outfile << "clock_t";
+                                out << "clock_t";
                         else if (word == "tiempo_t")
-                                outfile << "time_t";
+                                out << "time_t";
 
                         /* <iostream> */
                         else if (word == "terml")
-                                outfile << "endl";
+                                out << "endl";
                         else if (word == "cen")
-                                outfile << "cin";
+                                out << "cin";
                         else if (word == "ca")
-                                outfile << "cout";
+                                out << "cout";
                         else if (word == "creg")
-                                outfile << "clog";
+                                out << "clog";
                         else if (word == "lcen")
-                                outfile << "wcin";
+                                out << "wcin";
                         else if (word == "lca")
-                                outfile << "wcout";
+                                out << "wcout";
                         else if (word == "lcerr")
-                                outfile << "wcerr";
+                                out << "wcerr";
                         else if (word == "lcreg")
-                                outfile << "wclog";
+                                out << "wclog";
 
                         /* <string> */
                         else if (word == "palabra_simple")
-                                outfile << "basic_string";
+                                out << "basic_string";
                         else if (word == "carác_carác")
-                                outfile << "char_traits";
+                                out << "char_traits";
                         else if (word == "palabra")
-                                outfile << "string";
+                                out << "string";
                         else if (word == "ns16string")
-                                outfile << "u16string";
+                                out << "u16string";
                         else if (word == "ns32string")
-                                outfile << "u32string";
+                                out << "u32string";
                         else if (word == "palabral")
-                                outfile << "wstring";
+                                out << "wstring";
                         else if (word == "pai")
-                                outfile << "stoi";
+                                out << "stoi";
                         else if (word == "pal")
-                                outfile << "stol";
+                                out << "stol";
                         else if (word == "pansl")
-                                outfile << "stoul";
+                                out << "stoul";
                         else if (word == "pall")
-                                outfile << "stoll";
+                                out << "stoll";
                         else if (word == "pansll")
-                                outfile << "stoull";
+                                out << "stoull";
                         else if (word == "paf")
-                                outfile << "stof";
+                                out << "stof";
                         else if (word == "pad")
-                                outfile << "stod";
+                                out << "stod";
                         else if (word == "pald")
-                                outfile << "stold";
+                                out << "stold";
                         else if (word == "a_palabra")
-                                outfile << "to_string";
+                                out << "to_string";
                         else if (word == "a_palabral")
-                                outfile << "to_wstring";
+                                out << "to_wstring";
                         else if (word == "empieza")
-                                outfile << "begin";
+                                out << "begin";
                         else if (word == "fin")
-                                outfile << "end";
+                                out << "end";
 
                         /* containers */
                         else if (word == "matríz")
-                                outfile << "array";
+                                out << "array";
                         else if (word == "dfila")
-                                outfile << "deque";
+                                out << "deque";
                         else if (word == "lista_adelante")
-                                outfile << "forward_list";
+                                out << "forward_list";
                         else if (word == "lista")
-                                outfile << "list";
+                                out << "list";
                         else if (word == "pila")
-                                outfile << "stack";
+                                out << "stack";
                         else if (word == "fila")
-                                outfile << "queue";
+                                out << "queue";
                         else if (word == "fila_priorizada")
-                                outfile << "priority_queue";
+                                out << "priority_queue";
                         else if (word == "colección")
-                                outfile << "set";
+                                out << "set";
                         else if (word == "multicolección")
-                                outfile << "set";
+                                out << "set";
                         else if (word == "mapa")
-                                outfile << "map";
+                                out << "map";
                         else if (word == "multimapa")
-                                outfile << "multimap";
+                                out << "multimap";
                         else if (word == "colección_desordenada")
-                                outfile << "unordered_set";
+                                out << "unordered_set";
                         else if (word == "multicolección_desordenada")
-                                outfile << "unordered_multiset";
+                                out << "unordered_multiset";
                         else if (word == "mapa_desordenada")
-                                outfile << "unordered_map";
+                                out << "unordered_map";
                         else if (word == "multimapa_desordenada")
-                                outfile << "unordered_multimap";
+                                out << "unordered_multimap";
                         else if (word == "empieza")
-                                outfile << "begin";
+                                out << "begin";
                         else if (word == "antes_empieza")
-                                outfile << "before_begin";
+                                out << "before_begin";
                         else if (word == "oempieza")
-                                outfile << "rbegin";
+                                out << "rbegin";
                         else if (word == "ofin")
-                                outfile << "rend";
+                                out << "rend";
                         else if (word == "cempieza")
-                                outfile << "cbegin";
+                                out << "cbegin";
                         else if (word == "antes_cempieza")
-                                outfile << "cbefore_begin";
+                                out << "cbefore_begin";
                         else if (word == "cfin")
-                                outfile << "cend";
+                                out << "cend";
                         else if (word == "crempieza")
-                                outfile << "crbegin";
+                                out << "crbegin";
                         else if (word == "crfin")
-                                outfile << "crbegin";
+                                out << "crbegin";
                         else if (word == "crempieza")
-                                outfile << "crbegin";
+                                out << "crbegin";
                         else if (word == "crfin")
-                                outfile << "crend";
+                                out << "crend";
                         else if (word == "tamaño")
-                                outfile << "size";
+                                out << "size";
                         else if (word == "tamaño_máx")
-                                outfile << "max_size";
+                                out << "max_size";
                         else if (word == "vaciar")
-                                outfile << "empty";
+                                out << "empty";
                         else if (word == "remedir")
-                                outfile << "resize";
+                                out << "resize";
                         else if (word == "reducir_a_tamaño")
-                                outfile << "shring_to_fit";
+                                out << "shring_to_fit";
                         else if (word == "capacidad")
-                                outfile << "capacity";
+                                out << "capacity";
                         else if (word == "reservar")
-                                outfile << "reserve";
+                                out << "reserve";
                         else if (word == "frente")
-                                outfile << "front";
+                                out << "front";
                         else if (word == "atrás")
-                                outfile << "back";
-                        else if (word == "operador")     // in my notes as operator[]
-                                outfile << "operador";   // but idk if i want []
+                                out << "back";
+                        else if (word == "operador")
+                                out << "operador";
                         else if (word == "en")
-                                outfile << "at";
+                                out << "at";
                         else if (word == "asignar")
-                                outfile << "assign";
+                                out << "assign";
                         else if (word == "emponer")
-                                outfile << "emplace";
+                                out << "emplace";
                         else if (word == "emponer_después")
-                                outfile << "emplace_after";
+                                out << "emplace_after";
                         else if (word == "emponer_pista")
-                                outfile << "emplace_hint";
+                                out << "emplace_hint";
                         else if (word == "insertar")
-                                outfile << "insert";
+                                out << "insert";
                         else if (word == "insertar_después")
-                                outfile << "insert_after";
+                                out << "insert_after";
                         else if (word == "borrar")
-                                outfile << "erase";
+                                out << "erase";
                         else if (word == "emponer_frente")
-                                outfile << "emplace_front";
+                                out << "emplace_front";
                         else if (word == "borrar_después")
-                                outfile << "erase_after";
+                                out << "erase_after";
                         else if (word == "pulsar_atrás")
-                                outfile << "push_back";
+                                out << "push_back";
                         else if (word == "pop_atrás")
-                                outfile << "pop_back";
+                                out << "pop_back";
                         else if (word == "emponer_frente")
-                                outfile << "emplace_front";
+                                out << "emplace_front";
                         else if (word == "pulsar_frente")
-                                outfile << "push_front";
+                                out << "push_front";
                         else if (word == "pop_frente")
-                                outfile << "pop_front";
+                                out << "pop_front";
                         else if (word == "despejar")
-                                outfile << "clear";
+                                out << "clear";
                         else if (word == "swap")
-                                outfile << "trocar";
+                                out << "trocar";
                         else if (word == "unir")
-                                outfile << "splice";
+                                out << "splice";
                         else if (word == "quitar")
-                                outfile << "remove";
+                                out << "remove";
                         else if (word == "quitar_si")
-                                outfile << "remove_if";
+                                out << "remove_if";
                         else if (word == "único")
-                                outfile << "unique";
+                                out << "unique";
                         else if (word == "fundir")
-                                outfile << "merge";
+                                out << "merge";
                         else if (word == "ordenar")
-                                outfile << "sort";
+                                out << "sort";
                         else if (word == "invertir")
-                                outfile << "reverse";
+                                out << "reverse";
                         else if (word == "saca_asignador")
-                                outfile << "get_allocator";
+                                out << "get_allocator";
                         else if (word == "contar")
-                                outfile << "count";
+                                out << "count";
                         else if (word == "encontrar")
-                                outfile << "find";
+                                out << "find";
                         else if (word == "gama_igual")
-                                outfile << "equal_range";
+                                out << "equal_range";
                         else if (word == "límite_inferior")
-                                outfile << "lower_bound";
+                                out << "lower_bound";
                         else if (word == "límite_superior")
-                                outfile << "upper_bound";
+                                out << "upper_bound";
                         else if (word == "comp_clave")
-                                outfile << "key_comp";
+                                out << "key_comp";
                         else if (word == "comp_valor")
-                                outfile << "value_comp";
+                                out << "value_comp";
                         else if (word == "ig_clave")
-                                outfile << "key_eq";
+                                out << "key_eq";
                         else if (word == "función_hash")
-                                outfile << "hash_function";
+                                out << "hash_function";
                         else if (word == "balde")
-                                outfile << "bucket";
+                                out << "bucket";
                         else if (word == "num_balde")
-                                outfile << "bucket_count";
+                                out << "bucket_count";
                         else if (word == "balde_tamaño")
-                                outfile << "bucket_size";
+                                out << "bucket_size";
                         else if (word == "máx_num_balde")
-                                outfile << "max_bucket_count";
+                                out << "max_bucket_count";
                         else if (word == "carga_factor")
-                                outfile << "load_factor";
+                                out << "load_factor";
                         else if (word == "máx_carga_factor")
-                                outfile << "max_load_factor";
+                                out << "max_load_factor";
                         
                         else
-                                outfile << word;
+                                out << word;
                         if (!multi_word.symvec.empty()) {
-                                outfile << multi_word.symvec.front();
+                                out << multi_word.symvec.front();
                                 multi_word.symvec.erase(multi_word.symvec.begin());
                         }
                 }
 
-                /*if (end_word.valid) {
-                        end_word.valid = 0;
-                        outfile << end_word.cvec.back();
-                        end_word.cvec.pop_back();
-                }*/
-                
-                while(isspace(cin.peek())){
-                        while(cin.peek() == ' '){
-                                outfile << ' ';
-                                cin.get();
+                while(isspace(in.peek())){
+                        while(in.peek() == ' '){
+                                out << ' ';
+                                in.get();
                         }
-                        while(cin.peek() == '\t'){
-                                outfile << "\t";
-                                cin.get();
+                        while(in.peek() == '\t'){
+                                out << "\t";
+                                in.get();
                         }
-                        while(cin.peek() == '\n'){
-                                outfile << endl;
-                                cin.get();
+                        while(in.peek() == '\n'){
+                                out << endl;
+                                in.get();
                         }
                 }
         }
-        outfile.close();
+        out.close();
         return 0;
 }
