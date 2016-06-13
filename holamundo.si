@@ -1,8 +1,0 @@
-#incluir <iostream>
-
-usando nombres std;
-
-int main(){
-        ca << "¡hola, mundo!" << terml;
-        volver(0);
-}
