@@ -4,29 +4,61 @@
 
 using namespace std;
 
-int main(int argc, char* argv[])
+string make_outfile(string namefile)
 {
-        if (argc < 2) {
-                cerr << "Provide file to translate" << endl;
+        string name = "";
+        for (int i = 0; i < (int)namefile.length(); i++) {
+                if (namefile[i] == '.') {
+                        name = namefile.substr(0,i);
+                        name += ".cpp";
+                        break;
+                }
+        }
+        if (name == "") {
+                cerr << "No .si file found\n";
                 exit(EXIT_FAILURE);
         }
-        ifstream in(argv[1]);
-        ofstream out(argv[2]);
-//        out.open();
+        return name;
+}
 
+int main(int argc, char* argv[])
+{
         unsigned long i = 0;
         string word, tempword;
+        bool ignore = false;
+        bool long_ignore = false;
+        string com_check = "";
 
         struct multi_word {
                 vector<string> wvec;
                 vector<string> symvec;
         } multi_word;
+        
+        ifstream in(argv[1]);
+        ofstream out;
+
+        if (argc < 2) {
+                cerr << "Provide file to translate" << endl;
+                exit(EXIT_FAILURE);
+        }
+        else if (argc == 2) {
+                string outfile = make_outfile(argv[1]);
+                out.open(outfile);
+        }
+        else if (argc > 2)
+                out.open(argv[2]);
 
         while (in >> word) {
                 while (!isalnum(word.front()) && (word.size() > 1)) {
+                        com_check += word.front();
                         out << word.front();
                         word.erase(0,1);
+                        if (com_check == "//")
+                                ignore = true;
+                        if (com_check == "/*")
+                                long_ignore = true;
                 }
+                com_check = "";
 
                 /* loops through the whole word taken in. if symbols are found,
                  * splits word up for piece-by-piece analysis and stores
@@ -56,6 +88,8 @@ int main(int argc, char* argv[])
                 while (!multi_word.wvec.empty()) {
                         word = multi_word.wvec.front();
                         multi_word.wvec.erase(multi_word.wvec.begin());
+
+                        /* translations */
 
                         /* etc */
                         if (word == "incluir")
@@ -94,6 +128,8 @@ int main(int argc, char* argv[])
                                 out << "Clase";
                         else if (word == "struct")
                                 out << "estruct";
+                        else if (word == "no_signo")
+                                out << "unsigned";
                        
                         /* flow control */
                         else if (word == "si")

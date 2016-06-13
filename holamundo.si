@@ -4,6 +4,5 @@ usando nombres std;
 
 int main(){
         ca << "¡hola, mundo!" << terml;
-        ca << "sqrt of 4 is: " <<rzcb(4)<<terml;
         volver(0);
 }
