@@ -27,12 +27,11 @@ int main(int argc, char* argv[])
         string word, tempword;
         bool ignore = false;
         bool long_ignore = false;
+        bool q_ignore = false;
         string com_check = "";
 
-        struct multi_word {
-                vector<string> wvec;
-                vector<string> symvec;
-        } multi_word;
+        vector<string> wvec;
+        vector<string> symvec;
         
         ifstream in(argv[1]);
         ofstream out;
@@ -55,8 +54,14 @@ int main(int argc, char* argv[])
                         word.erase(0,1);
                         if (com_check == "//")
                                 ignore = true;
-                        if (com_check == "/*")
+                        else if (com_check == "/*")
                                 long_ignore = true;
+                        else if (com_check == "*/" && long_ignore)
+                                long_ignore = false;
+                    /*    else if (com_check == '"' && !q_ignore)
+                                q_ignore = true;
+                        else if(com_check == '"' && q_ignore)
+                                q_ignore = false; */
                 }
                 com_check = "";
 
@@ -71,28 +76,42 @@ int main(int argc, char* argv[])
                            && word[i] != '_') {             
                                 tempword = word.substr(0,i);  
                                 word.erase(0,i);
-                                multi_word.wvec.push_back(tempword);
+                                wvec.push_back(tempword);
                                 i = 0;
-                                while (!isalnum(word[i]) && !isspace(word[i])) 
+                                while (!isalnum(word[i]) && !isspace(word[i])) {
+                                        if (word[i] == '/' && word[i + 1] == '/')
+                                                ignore = true;
+                                        else if (word[i] == '"' && q_ignore)
+                                                q_ignore = false;
+                                        else if (word[i] == '"' && !q_ignore)
+                                                q_ignore = true;
+                                        else if (word[i] == '/' && word[i + 1] == '*')
+                                                long_ignore = true;
+                                        else if (word[i] == '*' &&
+                                                 word[i + 1] == '/' && long_ignore)
+                                                long_ignore = false;
                                         i++;
+                                }
                                 tempword = word.substr(0,i);
                                 word.erase(0,i);
-                                multi_word.symvec.push_back(tempword);
+                                symvec.push_back(tempword);
                                 i = 0;
                                 continue;
                         }
                         i++;
                 }
                 if (word.length() != 0)
-                        multi_word.wvec.push_back(word);
-                while (!multi_word.wvec.empty()) {
-                        word = multi_word.wvec.front();
-                        multi_word.wvec.erase(multi_word.wvec.begin());
+                        wvec.push_back(word);
+                while (!wvec.empty()) {
+                        word = wvec.front();
+                        wvec.erase(wvec.begin());
 
+                        if (long_ignore || q_ignore || ignore)
+                                out << word;
                         /* translations */
 
                         /* etc */
-                        if (word == "incluir")
+                        else if (word == "incluir")
                                 out << "include";
                         else if (word == "usando")
                                 out << "using";
@@ -762,9 +781,9 @@ int main(int argc, char* argv[])
                         
                         else
                                 out << word;
-                        if (!multi_word.symvec.empty()) {
-                                out << multi_word.symvec.front();
-                                multi_word.symvec.erase(multi_word.symvec.begin());
+                        if (!symvec.empty()) {
+                                out << symvec.front();
+                                symvec.erase(symvec.begin());
                         }
                 }
 
@@ -780,6 +799,8 @@ int main(int argc, char* argv[])
                         while(in.peek() == '\n'){
                                 out << endl;
                                 in.get();
+                                if (ignore)
+                                        ignore = false;
                         }
                 }
         }
