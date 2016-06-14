@@ -106,6 +106,10 @@ int main(int argc, char* argv[])
                         word = wvec.front();
                         wvec.erase(wvec.begin());
 
+                        cerr << "word: " << word << endl;
+                        cerr << "long_ignore? " << long_ignore << endl;
+                        cerr << "q_ignore? " << q_ignore << endl;
+                        cerr << "ignore? " << ignore << endl;
                         if (long_ignore || q_ignore || ignore)
                                 out << word;
                         /* translations */
