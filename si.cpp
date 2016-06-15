@@ -48,7 +48,8 @@ int main(int argc, char* argv[])
                 out.open(argv[2]);
 
         while (in >> word) {
-                while (!isalnum(word.front()) && (word.size() > 1)) {
+                while (!isalnum(word.front()) && (word.size() >= 1)) {
+                        cerr << "word: " << word << endl;
                         com_check += word.front();
                         out << word.front();
                         word.erase(0,1);
@@ -58,12 +59,13 @@ int main(int argc, char* argv[])
                                 long_ignore = true;
                         else if (com_check == "*/" && long_ignore)
                                 long_ignore = false;
-                    /*    else if (com_check == '"' && !q_ignore)
+                        else if (com_check == "\x22" && !q_ignore)
                                 q_ignore = true;
-                        else if(com_check == '"' && q_ignore)
-                                q_ignore = false; */
+                        else if(com_check == "\x22" && q_ignore)
+                                q_ignore = false;
                 }
-                com_check = "";
+               // cerr << "com_check cleared" << endl;
+                com_check.clear();
 
                 /* loops through the whole word taken in. if symbols are found,
                  * splits word up for piece-by-piece analysis and stores
@@ -79,6 +81,7 @@ int main(int argc, char* argv[])
                                 wvec.push_back(tempword);
                                 i = 0;
                                 while (!isalnum(word[i]) && !isspace(word[i])) {
+                                     //   cerr << "in char loop, looking at char " << word[i] << endl;
                                         if (word[i] == '/' && word[i + 1] == '/')
                                                 ignore = true;
                                         else if (word[i] == '"' && q_ignore)
@@ -106,10 +109,10 @@ int main(int argc, char* argv[])
                         word = wvec.front();
                         wvec.erase(wvec.begin());
 
-                        cerr << "word: " << word << endl;
-                        cerr << "long_ignore? " << long_ignore << endl;
-                        cerr << "q_ignore? " << q_ignore << endl;
-                        cerr << "ignore? " << ignore << endl;
+            //            cerr << "word: " << word << endl;
+              //          cerr << "long_ignore? " << long_ignore << endl;
+                //        cerr << "q_ignore? " << q_ignore << endl;
+                  //      cerr << "ignore? " << ignore << endl;
                         if (long_ignore || q_ignore || ignore)
                                 out << word;
                         /* translations */
