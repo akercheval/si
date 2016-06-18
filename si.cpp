@@ -165,6 +165,10 @@ int main(int argc, char* argv[])
         return 0;
 }
 
+/* master translation func. Takes in word to check for 
+ * need to translate, does so if necessary, otherwise
+ * prints the word that was given to it
+ */
 void printword(string word, ofstream* out)
 {
         /* etc */
