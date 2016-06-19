@@ -2,11 +2,6 @@
 #include <fstream>
 using namespace std;
 
-void Word::set_word(string new_word)
-{
-        word = new_word;
-}
-
 void Word::set_out(string new_out)
 {
         out.open(new_out);
@@ -187,6 +182,8 @@ void Word::translate_word()
                 out << "estruct";
         else if (word == "no_signo")
                 out << "unsigned";
+        else if (word == "void")
+                out << "vacío";
        
         /* flow control */
         else if (word == "si")
@@ -606,6 +603,100 @@ void Word::translate_word()
                 out << "clock_t";
         else if (word == "tiempo_t")
                 out << "time_t";
+
+        /* fstream */
+        else if (word == "abrir")
+                out << "open";
+        else if (word == "abierto")
+                out << "is_open";
+        else if (word == "cerrar")
+                out << "close";
+        else if (word == "leecarga")
+                out << "rdbuf";
+        else if (word == "trocar")
+                out << "swap";
+        else if (word == "numcarác")
+                out << "gcount";
+        else if (word == "saca")
+                out << "get";
+        else if (word == "sacalínea")
+                out << "getline";
+        else if (word == "ignorar")
+                out << "ignore";
+        else if (word == "mira")
+                out << "peek";
+        else if (word == "leer")
+                out << "read";
+        else if (word == "leeralguna")
+                out << "readsome";
+        else if (word == "pon")
+                out << "putback";
+        else if (word == "dessaca")
+                out << "unget";
+        else if (word == "decirg")
+                out << "tellg";
+        else if (word == "buscarg")
+                out << "seekg";
+        else if (word == "sinc")
+                out << "sync";
+        else if (word == "escribir")
+                out << "write";
+        else if (word == "decirp")
+                out << "tellp";
+        else if (word == "buscarp")
+                out << "seekp";
+        else if (word == "descargar")
+                out << "flush";
+        else if (word == "bueno")
+                out << "good";
+        else if (word == "fda")
+                out << "eof";
+        else if (word == "fracaso")
+                out << "fail";
+        else if (word == "malo")
+                out << "bad";
+        else if (word == "leerestado")
+                out << "rdstate";
+        else if (word == "ponestado")
+                out << "setstate";
+        else if (word == "despejar")
+                out << "clear";
+        else if (word == "copfmt")
+                out << "copyfmt";
+        else if (word == "llenar")
+                out << "fill";
+        else if (word == "excepciónes")
+                out << "exceptions";
+        else if (word == "imbuir")
+                out << "imbue";
+        else if (word == "atar")
+                out << "tie";
+        else if (word == "reducir")
+                out << "narrow";
+        else if (word == "ampliar")
+                out << "widen";
+        else if (word == "señales")
+                out << "flags";
+        else if (word == "ponseñal")
+                out << "setf";
+        else if (word == "desponseñal")
+                out << "unsetf";
+        else if (word == "precisión")
+                out << "precision";
+        else if (word == "ancho")
+                out << "width";
+        else if (word == "sacaloc")
+                out << "getloc";
+        else if (word == "xasign")
+                out << "xalloc";
+        else if (word == "ipalab")
+                out << "iword";
+        else if (word == "ppalab")
+                out << "pword";
+        else if (word == "retrollamada")
+                out << "register_callback";
+        else if (word == "sinc_con_stdio")
+                out << "sync_with_stdio";
 
         /* <iostream> */
         else if (word == "terml")

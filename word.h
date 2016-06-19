@@ -8,7 +8,6 @@ using namespace std;
 
 class Word {
         public:
-                void set_word(string new_word);
                 void set_in(string new_in);
                 void set_out(string new_out);
                 void write();
