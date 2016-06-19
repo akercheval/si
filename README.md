@@ -50,6 +50,9 @@ the executable isn't in your bin.
 just haven't tried it yet.
   * If it does, you'd need to specify to write to a .c file as opposed to a .cpp
   one.
+* This is, because of Windows's weird encoding of accented characters, only 
+questionably compatible with Windows. Everything here is encoded in UTF-8, for
+the curious.
 
 ##Planned updates:
 
@@ -60,6 +63,7 @@ just haven't tried it yet.
 can't understand compiler messages
 * Command line translations (i.e. having `qt` for quitar do the same thing as
 `rm`
+* Debugging, of which I'm sure plenty is needed
 
 Any help at all with anything is more than welcome, so go ahead and fork and 
 shoot a pull request - whatever you want!
