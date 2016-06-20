@@ -18,13 +18,12 @@ void Word::close_files()
         out.close();
 }
 
+/* analyzes and writes any non-alphanumeric characters at the front of the word
+ * and sets any ignore flags if necessary */
 void Word::check_front()
 {
         string com_check;
-
         com_check.clear();
-        
-        /* analyze front of word and set ignores if necessary */
 
         while (!isalnum(word.front()) && (word.size() >= 1)) {
                 com_check += word.front();
@@ -48,14 +47,14 @@ void Word::check_front()
         }
 }
 
+/* loops through the whole word taken in. if symbols are found,
+ * splits word up for piece-by-piece analysis and stores
+ * symbols in a vector, that way a theoretically valid "word"
+ * like ca<<rzcb((mi_matríz->mi_palabra.tamaño))<<terml;
+ * gets everything necessary to change to English changed.
+ */
 void Word::split_word()
 {
-        /* loops through the whole word taken in. if symbols are found,
-         * splits word up for piece-by-piece analysis and stores
-         * symbols elsewhere, that way a theoretically valid "word"
-         * like ca<<rzcb((mi_matríz->mi_palabra.tamaño))<<terml;
-         * gets everything necessary to change to English changed.
-         */
         unsigned long i = 0;
         while (i != word.length()) {
                 /* loop through word until non-aplhanumeric is found */
@@ -87,10 +86,14 @@ void Word::split_word()
                 }
                 i++;
         }
-        if (word.length() != 0)
+        if (word.length() != 0) // i.e. no symbols found
                 wvec.push_back(word);
 }
 
+/* empties word vector one word at a time, translating them and then writing
+ * their translations, or lack thereof. Then prints the symbols following 
+ * the words, if any exist, and removes any ignore flags that have been set
+ * if a symbol indicates they should be turned off. */
 void Word::print_word()
 {
         string sym;
@@ -140,7 +143,7 @@ void Word::print_word()
         }
 }
 
-
+/* hella translations. not exceedingly interesting */
 void Word::translate_word()
 {
         /* etc */
@@ -719,7 +722,7 @@ void Word::translate_word()
         /* <string> */
         else if (word == "palabra_simple")
                 out << "basic_string";
-        else if (word == "carác_carác")
+        else if (word == "carác_carác") // this is the one pun I allowed myself to write
                 out << "char_traits";
         else if (word == "palabra")
                 out << "string";
@@ -825,8 +828,6 @@ void Word::translate_word()
                 out << "front";
         else if (word == "atrás")
                 out << "back";
-        else if (word == "operador")
-                out << "operador";
         else if (word == "en")
                 out << "at";
         else if (word == "asignar")
@@ -912,6 +913,7 @@ void Word::translate_word()
                 out << word;
 }
 
+/* here's your loop, all nice and compressed! */
 void Word::write()
 {       
         while (in >> word) {
