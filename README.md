@@ -31,6 +31,7 @@ int main(vacío)
 #####To Use:
 
 1. Clone the repository, place the Sí executable in your bin if you want.
+  1. [Instructions to do so](http://unix.stackexchange.com/questions/162134/how-to-execute-a-bash-script-without-typing) if you don't know how!
 2. From the command line, type `si <sífile>.si <destination>.cpp` (or `./si` if
 the executable isn't in your bin).
   1. If no destination is specified, `<sífile>.cpp` will be created and written.
@@ -44,6 +45,7 @@ just haven't tried it yet.
   * If it does, you'd need to specify to write to a .c file as opposed to a .cpp
   one.
 * This program is, because of Windows's weird ANSI encoding of accented characters (and my limited experience with dealing with it), only questionably compatible with Windows at the moment. But let's be real, why were you coding on Windows anyway? God knows how this would work on the Windows command prompt. I'd rather not think about it. Updates to come.
+* If you only choose to write some words in Spanish, that's chill too. The program won't translate anything in English to Spanish.
 
 #####Planned updates:
 
