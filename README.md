@@ -1,6 +1,5 @@
 ### Sí
 ##### A coding utility for native Spanish speakers
-###### Written by Adam Kercheval
 
 Sí is a pseudo-programming language that serves as a Spanish-based alternative
 to C++, so that Spanish speakers can write code using Spanish keywords that make
@@ -37,11 +36,11 @@ int main(vacío)
 
 #####To Use:
 
-1. Clone the repository, place the Sí executable in your bin if you so choose.
+1. Clone the repository, place the Sí executable in your bin if you want.
 2. From the command line, type `si <sífile>.si <destination>.cpp` (or `./si` if
-the executable isn't in your bin.
+the executable isn't in your bin).
   1. If no destination is specified, `<sífile>.cpp` will be created and written.
-3. The C++ file can then be compiled and run.
+3. The file will be translated to English C++ and can then be compiled and run.
 
 #####Notes:
 
@@ -50,9 +49,9 @@ the executable isn't in your bin.
 just haven't tried it yet.
   * If it does, you'd need to specify to write to a .c file as opposed to a .cpp
   one.
-* This program is, because of Windows's weird encoding of accented characters, only 
-questionably compatible with Windows. Everything here is encoded in UTF-8, for
-the curious.
+* This program is, because of Windows's weird ANSI encoding of accented characters 
+* (and my limited experience with dealing with it), only questionably compatible with 
+* Windows at the moment. But let's be real, why were you coding on Windows anyway?
 
 #####Planned updates:
 
@@ -63,6 +62,7 @@ the curious.
 can't understand compiler messages
 * Command line translations (i.e. having `qt` for quitar do the same thing as
 `rm`
+* A web app for Sí demonstration without the download
 * Debugging, of which I'm sure plenty is needed
 
 Any help at all with anything is more than welcome, so go ahead and fork and 
