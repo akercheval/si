@@ -10,7 +10,7 @@ int main(int argc, char* argv[])
         Word word;
                 
         if (argc < 2) {
-                cerr << "Provide file to translage" << endl;
+                cerr << "Usage: si [origin].si [destination].cpp" << endl;
                 exit(EXIT_FAILURE);
         }
         else if (argc == 2) {
@@ -26,6 +26,10 @@ int main(int argc, char* argv[])
         word.close_files();
 }
 
+/* if no destination file is provided, this will take the
+ * first argument and turn its contents in to the name
+ * of the destination file in .cpp format
+ */
 string make_outfile(string namefile)
 {
         string name = "";
