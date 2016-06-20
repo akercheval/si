@@ -60,7 +60,7 @@ just haven't tried it yet.
 * Reverse translation (i.e. C++ to Sí)
 * Compiler support - admittedly, this whole thing isn't worth very much if you
 can't understand compiler messages
-* Command line translations (i.e. having `qt` for quitar do the same thing as
+* Shell translations (i.e. having `qt` for quitar do the same thing as
 `rm`
 * A web app for Sí demonstration without the download
 * Debugging, of which I'm sure plenty is needed
