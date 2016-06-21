@@ -97,8 +97,6 @@ void Word::split_word()
 void Word::print_word()
 {
         string sym;
-                /* empty word and sym vectors and translate/print them
-                 * as necessary */
 
         while (!wvec.empty()) {
                 word = wvec.front();
@@ -782,7 +780,7 @@ void Word::translate_word()
                 out << "multimap";
         else if (word == "colección_desordenada")
                 out << "unordered_set";
-        else if (word == "multicolección_desordenada")
+        else if (word == "multicolección_desordenada") // that's a mouthful
                 out << "unordered_multiset";
         else if (word == "mapa_desordenada")
                 out << "unordered_map";
