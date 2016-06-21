@@ -45,7 +45,7 @@ just haven't tried it yet.
   * If it does, you'd need to specify to write to a .c file as opposed to a .cpp
   one.
 * This program is, because of Windows's weird ANSI encoding of accented characters (and my limited experience with dealing with it), only questionably compatible with Windows at the moment. But let's be real, why were you coding on Windows anyway? God knows how this would work on the Windows command prompt. I'd rather not think about it. Updates to come.
-* If you only choose to write some words in Spanish, that's chill too. The program won't translate anything in English to Spanish.
+* If you choose to only write some words in Spanish as opposed to all of them, that's chill too. The program won't translate anything in English to Spanish.
 
 #####Planned updates:
 
@@ -53,7 +53,7 @@ just haven't tried it yet.
 * Compatibility with other languages
 * Reverse translation (i.e. C++ to Sí)
 * Compiler support - admittedly, this whole thing isn't worth very much if you can't understand compiler messages
-* Shell translations (i.e. having `qt` for quitar do the same thing as `rm`
+* Shell translations (i.e. having `qt` for quitar do the same thing as `rm`)
 * A web app for Sí demonstration without the download
 * Debugging, of which I'm sure plenty is needed
 
