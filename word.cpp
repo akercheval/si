@@ -177,14 +177,14 @@ void Word::translate_word()
                 out << "float";
         else if (word == "doble")
                 out << "double";
-        else if (word == "Class")
-                out << "Clase";
-        else if (word == "struct")
-                out << "estruct";
+        else if (word == "clase")
+                out << "class";
+        else if (word == "estruct")
+                out << "struct";
         else if (word == "no_signo")
                 out << "unsigned";
-        else if (word == "void")
-                out << "vacío";
+        else if (word == "vacío")
+                out << "void";
        
         /* flow control */
         else if (word == "si")
