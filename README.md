@@ -28,14 +28,17 @@ int main(vacío)
 }
 ```
 
+
+
 #####To Use:
 
 1. Clone the repository, place the Sí executable in your bin if you want.
   1. [Instructions to do so](http://unix.stackexchange.com/questions/162134/how-to-execute-a-bash-script-without-typing) if you don't know how!
-2. From the command line, type `si <sífile>.si <destination>.cpp` (or `./si` if
+2. Compile with `make all`
+3. From the command line, type `si <sífile>.si <destination>.cpp` (or `./si` if
 the executable isn't in your bin).
   1. If no destination is specified, `<sífile>.cpp` will be created and written.
-3. The file will be translated to English C++ and can then be compiled and run.
+4. The file will be translated to English C++ and can then be compiled and run.
 
 #####Notes:
 

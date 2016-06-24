@@ -8,18 +8,33 @@ string make_outfile(string namefile);
 int main(int argc, char* argv[])
 {
         Word word;
-                
+
+
         if (argc < 2) {
-                cerr << "Usage: si [origin].si [destination].cpp" << endl;
+                cerr << "Usage: si origin.si [destination.cpp]" << endl;
                 exit(EXIT_FAILURE);
         }
         else if (argc == 2) {
-                string outfile = make_outfile(argv[1]);
-                word.set_out(outfile);
+                ifstream inputFile(argv[1]);
+                if (!inputFile) {
+                        cerr << "ERROR: Input file could not be read." << endl;
+                        exit(EXIT_FAILURE);
+                } else {
+                        string outfile = make_outfile(argv[1]);
+                        word.set_out(outfile);
+                }
         }
-        else if (argc > 2)
-                word.set_out(argv[2]);
-        
+        else if (argc > 2) {
+                ifstream inputFile(argv[1]);
+                if (!inputFile) {
+                        cerr << "ERROR: Input file could not be read." << endl;
+                        exit(EXIT_FAILURE);
+                } else {
+                        word.set_out(argv[2]);
+                }
+
+        }
+
         word.set_in(argv[1]);
         word.write();
 
