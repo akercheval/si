@@ -3,6 +3,7 @@
 
 #include <vector>
 #include <fstream>
+#include <unordered_map>
 
 using namespace std;
 
@@ -12,6 +13,7 @@ class Word {
                 void set_out(string new_out);
                 void write();
                 void close_files();
+                Word(); //constructor
 
         private:
                 string word;
@@ -20,13 +22,14 @@ class Word {
                 bool q_ignore;
                 vector<string> wvec;
                 vector<string> symvec;
+                unordered_map<string, string> dictionary;
                 ifstream in;
                 ofstream out;
 
                 void check_front();
                 void split_word();
                 void print_word();
-                void translate_word();
+                string translate_word(string word);
         };
 
 #endif
