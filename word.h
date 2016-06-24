@@ -13,13 +13,13 @@ class Word {
                 void set_out(string new_out);
                 void write();
                 void close_files();
-                Word(); //constructor
+                Word();
 
         private:
                 string word;
-                bool ignore;
-                bool long_ignore;
-                bool q_ignore;
+                bool ignore = false;
+                bool long_ignore = false;
+                bool q_ignore = false;
                 vector<string> wvec;
                 vector<string> symvec;
                 unordered_map<string, string> dictionary;

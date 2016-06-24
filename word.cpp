@@ -5,7 +5,7 @@ using namespace std;
 
 Word::Word()
 {
-        // Initialize our dictionary with all the translations
+        // Initialize dictionary with all the translations
         ifstream infile("dict.txt");
         string eng, esp;
         while(infile >> esp >> eng)
@@ -114,8 +114,9 @@ void Word::print_word()
                 word = wvec.front();
                 wvec.erase(wvec.begin());
 
-                if (long_ignore || q_ignore || ignore)
+                if (long_ignore || q_ignore || ignore) {
                         out << word;
+                }
                 else 
                         out << translate_word(word);
 
@@ -153,14 +154,13 @@ void Word::print_word()
         }
 }
 
-/* hella translations. not exceedingly interesting */
+/* runs translations with map in dict.txt */
 string Word::translate_word(string eng)
 {
          if (dictionary[eng] != "") {
                 //translation exists
                 return dictionary[eng];
          } else {
-                cerr << "Could not translate " << eng << endl;
                 return eng;
          }
 

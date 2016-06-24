@@ -268,7 +268,7 @@ lca wcout
 lcerr wcerr
 lcreg wclog
 palabra_simple basic_string
-carác_carác") // this is the one pun I allowed myself  char_traits
+carác_carác char_traits
 palabra string
 ns16string u16string
 ns32string u32string
@@ -297,7 +297,7 @@ multicolección set
 mapa map
 multimapa multimap
 colección_desordenada unordered_set
-multicolección_desordenada") // that's  unordered_multiset
+multicolección_desordenada unordered_multiset
 mapa_desordenada unordered_map
 multimapa_desordenada unordered_multimap
 empieza begin
