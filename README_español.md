@@ -37,11 +37,12 @@ int main(vacío)
 
 1. Haz `git clone` en el depósito, pon el ejecutable de Sí en tu bin, si quieres.
   1. [Instrucciones](http://unix.stackexchange.com/questions/162134/how-to-execute-a-bash-script-without-typing), si no sabes cómo hacerlo
-2. En el shell, escribe `si <archivosí>.si <destino>.cpp` (o `./sí` si el ejecutable
+2. Compila con `make all`
+3. En el shell, escribe `si <archivosí>.si <destino>.cpp` (o `./sí` si el ejecutable
 no está en tu bin). Nota que el comando y la extensión del archivo son escritos ´si´, sin
 acento.
   1. Si no incluyas destino, `<archivosí>.cpp` será creado y escrito.
-3. El archivo será traducido a C++ en inglés que puede ser compilado y ejecutado.
+4. El archivo será traducido a C++ en inglés que puede ser compilado y ejecutado.
 
 #####Notas:
 
