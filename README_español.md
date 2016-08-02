@@ -43,6 +43,7 @@ no está en tu bin). Nota que el comando y la extensión del archivo son escrito
 acento.
   1. Si no incluyas destino, `<archivosí>.cpp` será creado y escrito.
 4. El archivo será traducido a C++ en inglés que puede ser compilado y ejecutado.
+5. `make all` también compilará `is`, que es el opuesto de `si` - transla C++ a Sí.
 
 #####Notas:
 
@@ -56,7 +57,6 @@ acento.
 
 * Más traducciónes, siempre
 * Compatabilidad con otras lenguajes de programación
-* Traducción opuesta, de C++ a Sí
 * Traducciónes para mensajes del compilador
 * Traducciones para el comandos del shell
 * Un sitio web para Sí

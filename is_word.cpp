@@ -10,7 +10,7 @@ Word::Word()
         string eng, esp;
         while(infile >> esp >> eng)
         {
-                dictionary.emplace(esp, eng);
+                dictionary.emplace(eng, esp);
         }
 }
 
@@ -157,13 +157,11 @@ void Word::print_word()
 /* runs translations with map in dict.txt */
 string Word::translate_word(string word)
 {
-         if (dictionary[word] != "") {
+        if (dictionary[word] != "") {
                 //translation exists
                 return dictionary[word];
-         } else {
-                return word;
-         }
-
+        }
+        return word;
 }
 
 /* here's your loop, all nice and compressed! */

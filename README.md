@@ -39,6 +39,7 @@ int main(vacío)
 the executable isn't in your bin).
   1. If no destination is specified, `<sífile>.cpp` will be created and written.
 4. The file will be translated to English C++ and can then be compiled and run.
+5. `make all` will also make an executable called `is`, which is `si`, but backwards. In other words, it translates C++ into Sí.
 
 #####Notes:
 
@@ -54,7 +55,6 @@ just haven't tried it yet.
 
 * More translations, of course.
 * Compatibility with other languages
-* Reverse translation (i.e. C++ to Sí)
 * Compiler support - admittedly, this whole thing isn't worth very much if you can't understand compiler messages
 * Shell translations (i.e. having `qt` for quitar do the same thing as `rm`)
 * A web app for Sí demonstration without the download
