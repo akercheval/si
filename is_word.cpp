@@ -79,15 +79,6 @@ void Word::split_word()
                         /* parse through non-alphanums and set ignores */
                         while (!isalnum(word[i]) && !isspace(word[i]) &&
                                 i != word.length()) {
-                                if (word[i] == '/' && word[i + 1] == '/') {
-                                        ignore = true;
-                                }
-                                else if (word[i] == '"' && !q_ignore) {
-                                        q_ignore = true;
-                                }
-                                else if (word[i] == '/' && word[i + 1] == '*') {
-                                        long_ignore = true;
-                                }
                                 i++;
                         }
                         /* put non-alphanums in vector */
@@ -123,8 +114,17 @@ void Word::print_word()
                 if (!symvec.empty()) {
                         sym = symvec.front();
                         out << sym;
-                        /* turn off ignores */
-                        if ((sym.find("*/") != string::npos)
+                        /* turn on and off ignores */
+                        if ((sym.find("\x22") != string::npos) 
+                             && !q_ignore)
+                                q_ignore = true;
+                        else if ((sym.find("/*") != string::npos) 
+                                  && !long_ignore)
+                                long_ignore = true;
+                        else if ((sym.find("//") != string::npos)
+                                  && !ignore)
+                                ignore = true;
+                        else if ((sym.find("*/") != string::npos)
                              && long_ignore)
                                 long_ignore = false;
                         else if ((sym.find("\x22") != string::npos)
