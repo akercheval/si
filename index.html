@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="description" content="Sí : A C++ solution for native Spanish speakers">
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>Sí</title>
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/akercheval/si">View on GitHub</a>
+
+          <h1 id="project_title">Sí</h1>
+          <h2 id="project_tagline">A C++ solution for native Spanish speakers</h2>
+
+            <section id="downloads">
+              <a class="zip_download_link" href="https://github.com/akercheval/si/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/akercheval/si/tarball/master">Download this project as a tar.gz file</a>
+            </section>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <h3>
+<a id="sí" class="anchor" href="#s%C3%AD" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Sí</h3>
+
+<h5>
+<a id="a-coding-utility-for-native-spanish-speakers" class="anchor" href="#a-coding-utility-for-native-spanish-speakers" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>A coding utility for native Spanish speakers</h5>
+
+<p>Sí is a pseudo-programming language that serves as a Spanish-based alternative to C++, so that Spanish speakers can write code using Spanish keywords that make more sense to them than English ones do. This is especially useful for Spanish-speaking students who are learning to code for the first time, allowing them to learn to write programs without having to first understand English.</p>
+
+<p>In other words, code written using the Spanish keywords in Sí translates directly to C++ code that can be compiled and run without ever having to look at English.</p>
+
+<p>For example, a Hello World program in C++ would look like this:</p>
+
+<pre><code>#include &lt;iostream&gt;
+using namespace std;
+
+int main(void)
+{
+        cout &lt;&lt; "¡Hola, mundo!" &lt;&lt; endl;
+        return 0;
+}
+</code></pre>
+
+<p>would be written in Sí like this:</p>
+
+<pre><code>#incluir &lt;iostream&gt;
+usando nombres std;
+
+int main(vacío)
+{
+        ca &lt;&lt; "¡Hola, mundo!" &lt;&lt; terml;
+        volver 0;
+}
+</code></pre>
+
+<h5>
+<a id="to-use" class="anchor" href="#to-use" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>To Use:</h5>
+
+<ol>
+<li>Clone the repository and compile with <code>make all</code>
+</li>
+<li>Add the Sí executable to your path if you want.
+
+<ol>
+<li>
+<a href="http://unix.stackexchange.com/questions/162134/how-to-execute-a-bash-script-without-typing">Instructions to do so</a> if you don't know how!</li>
+</ol>
+</li>
+<li>From the command line, type <code>si &lt;sífile&gt;.si &lt;destination&gt;.cpp</code> (or <code>./si</code> if
+the executable isn't in your path).
+
+<ol>
+<li>If no destination is specified, <code>&lt;sífile&gt;.cpp</code> will be created and written.</li>
+</ol>
+</li>
+<li>The file will be translated to English C++ and can then be compiled and run.</li>
+<li>
+<code>make all</code> will also make an executable called <code>is</code>, which is <code>si</code>, but backwards. In other words, it translates C++ into Sí.</li>
+</ol>
+
+<h5>
+<a id="notes" class="anchor" href="#notes" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Notes:</h5>
+
+<ul>
+<li>A full list of words and their translations can be found <a href="https://docs.google.com/document/d/1c7vxJ4XN6ZArNbPVxBXsT-MwcSWAqconURG9hyf_63w/edit?usp=sharing">here</a>
+</li>
+<li>This also theoretically works with other languages, notably C, as long as you specify that you're writing to a .c file instead of a .cpp on. I've played around with it and Python a little bit and it shoul work in a limited capacity - that is, once I add the keywords and make a few edits it should be fine and theoretically could work with any language. Stick to C++ and C for now.</li>
+<li>This program is, because of Windows's weird ANSI encoding of accented characters (and my limited experience with dealing with it), only questionably compatible with Windows at the moment. But let's be real, why were you coding on Windows anyway? God knows how this would work on the Windows command prompt. I'd rather not think about it. Updates to come.</li>
+<li>If you choose to only write some words in Spanish as opposed to all of them, that's chill too. The <code>si</code> command won't translate anything in English to Spanish.</li>
+</ul>
+
+<h5>
+<a id="planned-updates" class="anchor" href="#planned-updates" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Planned updates:</h5>
+
+<ul>
+<li>More translations, of course.</li>
+<li>Compatibility with other languages</li>
+<li>Compiler support - admittedly, this whole thing isn't worth very much if you can't understand compiler messages</li>
+<li>Shell translations (i.e. having <code>qt</code> for quitar do the same thing as <code>rm</code>)</li>
+<li>A web app for Sí demonstration without the download</li>
+<li>Debugging, of which I'm sure plenty is needed</li>
+</ul>
+
+<p>Any help at all with anything is more than welcome, so go ahead and fork and shoot a pull request - whatever you want!
+Alternately, if you're lazy and just want to tell me something to do, hit me up <a href="http://goo.gl/forms/KPEAhqB33H3q5IcF2">here.</a></p>
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">Sí maintained by <a href="https://github.com/akercheval">akercheval</a></p>
+        <p>Published with <a href="https://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+    
+
+  </body>
+</html>
