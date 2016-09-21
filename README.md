@@ -44,7 +44,7 @@ the executable isn't in your path).
 #####Notes:
 
 * A full list of words and their translations can be found [here](https://docs.google.com/document/d/1c7vxJ4XN6ZArNbPVxBXsT-MwcSWAqconURG9hyf_63w/edit?usp=sharing)
-* This also theoretically works with other languages, notably C, as long as you specify that you're writing to a .c file instead of a .cpp on. I've played around with it and Python a little bit and it shoul work in a limited capacity - that is, once I add the keywords and make a few edits it should be fine and theoretically could work with any language. Stick to C++ and C for now.
+* This also theoretically works with other languages, notably C, as long as you specify that you're writing to a .c file instead of a .cpp one. I've played around with it and Python a little bit and it shoul work in a limited capacity - that is, once I add the keywords and make a few edits it should be fine and theoretically could work with any language. Stick to C++ and C for now.
 * This program is, because of Windows's weird ANSI encoding of accented characters (and my limited experience with dealing with it), only questionably compatible with Windows at the moment. But let's be real, why were you coding on Windows anyway? God knows how this would work on the Windows command prompt. I'd rather not think about it. Updates to come.
 * If you choose to only write some words in Spanish as opposed to all of them, that's chill too. The `si` command won't translate anything in English to Spanish.
 
