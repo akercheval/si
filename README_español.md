@@ -33,6 +33,10 @@ int main(vacío)
 }
 ```
 
+#####Noticias:
+Estoy trabajando en crear apoyo para usar Sí con Python, y debería completarlo en octubre. En Sí con Python, va a compilar y ejecutar el programa directamente, para que puedas ejecutar Sí en tu programa y automaticamente ejecutarlo con Python también, sin más trabajo.
+Teoréticamente podría hacer lo mismo con programas en C y C++, pero como que compilación es un parte más importante (o más directo) del proceso de escribir programas en estas lenguas, pienso que voy a dejar C y C++ como son ahora.
+
 #####Para usar:
 
 1. Haz `git clone` en el depósito, compila con `make all` y pon el ejecutable de Sí en tu path, si quieres.

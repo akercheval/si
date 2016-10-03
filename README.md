@@ -28,7 +28,9 @@ int main(vacío)
 }
 ```
 
-
+#####Update:
+Python (and general multi-language) support for Sí is currently in development and should be released (tentatively) by the end of October! I'm planning for it to compile and run the script at runtime, so that you could run Sí on your code and have Python start executing your code automatically.
+Theoretically I could do the same with C and C++ code, but considering that compilation is manual in those languages and it isn't quite the same in Python, I'm thinking of leaving C and C++ as they are. 
 
 #####To Use:
 

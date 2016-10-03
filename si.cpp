@@ -1,4 +1,5 @@
 #include <iostream>
+#include <stdlib.h>
 #include "word.h"
 
 using namespace std;
@@ -8,7 +9,7 @@ string make_outfile(string namefile);
 int main(int argc, char* argv[])
 {
         Word word;
-
+        string outfile;
 
         if (argc < 2) {
                 cerr << "Usage: si origin.si [destination.cpp]" << endl;
@@ -20,7 +21,7 @@ int main(int argc, char* argv[])
                         cerr << "ERROR: Input file could not be read." << endl;
                         exit(EXIT_FAILURE);
                 } else {
-                        string outfile = make_outfile(argv[1]);
+                        outfile = make_outfile(argv[1]);
                         word.set_out(outfile);
                 }
         }
@@ -30,6 +31,7 @@ int main(int argc, char* argv[])
                         cerr << "ERROR: Input file could not be read." << endl;
                         exit(EXIT_FAILURE);
                 } else {
+                        outfile = argv[2];
                         word.set_out(argv[2]);
                 }
 
@@ -39,6 +41,9 @@ int main(int argc, char* argv[])
         word.write();
 
         word.close_files();
+        string out = "clang++ " + outfile;
+        system(out.c_str());
+        system("./a.out");
 }
 
 /* if no destination file is provided, this will take the
