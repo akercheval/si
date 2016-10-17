@@ -18,6 +18,8 @@ doble double
 clase class
 estruct struct
 no_signo unsigned
+falso false
+cierto true
 vacío void
 si if
 si_no else
