@@ -41,9 +41,6 @@ int main(int argc, char* argv[])
         word.write();
 
         word.close_files();
-        string out = "clang++ " + outfile;
-        system(out.c_str());
-        system("./a.out");
 }
 
 /* if no destination file is provided, this will take the
