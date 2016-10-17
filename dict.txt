@@ -6,6 +6,8 @@ sinodef ifndef
 termsi endif
 salir exit
 volver return
+nueva new
+elimina delete
 carác char
 palab string
 archivo file
