@@ -9,13 +9,13 @@ pero hay unos cámbios que debería notar:
 ##### Una herramienta de programación de computadoras para programadores hispanohablantes
 
 Sí es una pseudo-lenguaje de programación que funciona como opción española de
-programar en C++, para que programadores hispanohablantes pueden escribir código
+programar en C++ y Python, para que programadores hispanohablantes puedan escribir código
 usando palabras en español en lugar de palabras en inglés. Es especialmente útil
 para estudientas hispanohablantes de informática porque pueden aprender cómo programar
 sin tener que saber inglés también.
 
 En otras palabras, programas escritos usando las palabras españolas en Sí traducen
-directamente a C++, que puede ser compilado y ejecutado sin mirar una vez a inglés.
+directamente a C++ o Python, que puede ser compilado y ejecutado sin mirar una vez a inglés.
 
 Por ejemplo, una programa Hello World en C++ parecería así:
 ```
