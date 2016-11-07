@@ -3,10 +3,12 @@
 #include <iostream>
 using namespace std;
 
-Word::Word()
+Word::Word(){}
+
+void Word::set_dict(string file)
 {
         // Initialize dictionary with all the translations
-        ifstream infile("dict.txt");
+        ifstream infile(file);
         string eng, esp;
         while(infile >> esp >> eng)
         {

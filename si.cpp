@@ -1,43 +1,56 @@
 #include <iostream>
 #include <stdlib.h>
+#include <cstring>
 #include "word.h"
 
 using namespace std;
 
-string make_outfile(string namefile);
+string make_outfile(string type, string namefile);
 
 int main(int argc, char* argv[])
 {
-        Word word;
         string outfile;
+        Word word;
 
-        if (argc < 2) {
-                cerr << "Usage: si origin.si [destination.cpp]" << endl;
+        if (argc < 3) {
+                cerr << "Usage: si [py,cpp] origin.si [destination.cpp]" << endl;
                 exit(EXIT_FAILURE);
         }
-        else if (argc == 2) {
-                ifstream inputFile(argv[1]);
+
+        if (strncmp(argv[1], "cpp", 3) == 0) {
+                word.set_dict("dict_cpp.txt");
+        }
+        else if (strncmp(argv[1], "py", 3) == 0) {
+                word.set_dict("dict_py.txt");
+        }
+        else {
+                cerr << "ERROR: Specify file type (cpp or py)" << endl;
+                exit(EXIT_FAILURE);
+        }
+
+        if (argc == 3) {
+                ifstream inputFile(argv[2]);
                 if (!inputFile) {
                         cerr << "ERROR: Input file could not be read." << endl;
                         exit(EXIT_FAILURE);
                 } else {
-                        outfile = make_outfile(argv[1]);
+                        outfile = make_outfile(argv[1], argv[2]);
                         word.set_out(outfile);
                 }
         }
         else if (argc > 2) {
-                ifstream inputFile(argv[1]);
+                ifstream inputFile(argv[2]);
                 if (!inputFile) {
                         cerr << "ERROR: Input file could not be read." << endl;
                         exit(EXIT_FAILURE);
                 } else {
-                        outfile = argv[2];
-                        word.set_out(argv[2]);
+                        outfile = argv[3];
+                        word.set_out(argv[3]);
                 }
 
         }
 
-        word.set_in(argv[1]);
+        word.set_in(argv[2]);
         word.write();
 
         word.close_files();
@@ -47,13 +60,18 @@ int main(int argc, char* argv[])
  * first argument and turn its contents in to the name
  * of the destination file in .cpp format
  */
-string make_outfile(string namefile)
+string make_outfile(string type, string namefile)
 {
         string name = "";
         for (int i = 0; i < (int)namefile.length(); i++) {
                 if (namefile[i] == '.') {
                         name = namefile.substr(0,i);
-                        name += ".cpp";
+                        if (type == "py") {
+                                name += ".py";
+                        }
+                        else if (type == "cpp") {
+                                name += ".cpp";
+                        }
                         break;
                 }
         }
