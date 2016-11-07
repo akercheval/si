@@ -9,9 +9,9 @@ Some things that are different about it:
 ### Sí
 ##### A coding utility for native Spanish speakers
 
-Sí is a pseudo-programming language that serves as a Spanish-based alternative to C++, so that Spanish speakers can write code using Spanish keywords that make more sense to them than English ones do. This is especially useful for Spanish-speaking students who are learning to code for the first time, allowing them to learn to write programs without having to first understand English.
+Sí is a pseudo-programming language that serves as a Spanish-based alternative to C++ and Python, so that Spanish speakers can write code using Spanish keywords that make more sense to them than English ones do. This is especially useful for Spanish-speaking students who are learning to code for the first time, allowing them to learn to write programs without having to first understand English.
 
-In other words, code written using the Spanish keywords in Sí translates directly to C++ code that can be compiled and run without ever having to look at English.
+In other words, code written using the Spanish keywords in Sí translates directly to C++ or Python code that can be compiled and run without ever having to look at English.
 
 For example, a Hello World program in C++ would look like this:
 ```
