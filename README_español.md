@@ -1,15 +1,12 @@
-### Sí
-##### Una herramienta de programación de computadoras para programadores hispanohablantes
-
 ####Sí 2.0 ya está!
 En este versión de Sí, puedes usarlo con Python con función completa. Es bastante fácil,
 pero hay unos cámbios que debería notar:
-1. Ahora tienes que especificar con qué idioma estás usando Sí. Por ejemplo, en 
-el pasado, usar Sí parecía así:
-`si archivo.si archivo.cpp`, pero ahora parece así: `si cpp archivo.si archivo.cpp`
-(o, por supuesto: `si py archivo.si archivo.py`)
-2. El programa también tratará ejecutar Python con el archivo nuevo, para simiular el Python shell.
-*Esto sólo funciona con Python3*
+
+1. Ahora tienes que especificar con qué idioma estás usando Sí. Por ejemplo, en el pasado, usar Sí parecía así: `si archivo.si archivo.cpp`, pero ahora parece así: `si cpp archivo.si archivo.cpp` (o, por supuesto: `si py archivo.si archivo.py`)
+2. El programa también tratará ejecutar Python con el archivo nuevo, para simiular el Python shell. *Esto sólo funciona con Python3*
+
+### Sí
+##### Una herramienta de programación de computadoras para programadores hispanohablantes
 
 Sí es una pseudo-lenguaje de programación que funciona como opción española de
 programar en C++, para que programadores hispanohablantes pueden escribir código
