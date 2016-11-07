@@ -1,9 +1,8 @@
 ####Update:
 Sí 2.0 is up and running! Translation to and from python is now available. 
 Some things that are different about it:
-1. Now, you must specify which language you'd like to translate to and from. This means the usage for a hypothetial file now looks like this:
-`si cpp testfile.si testfile.cpp`, whereas before it looked like `si testfile.si testfile.cpp`
-It's the same with python, by the way, you just need to replace `cpp` with `py`: `si py testfile.si testfile.py`
+
+1. Now, you must specify which language you'd like to translate to and from. This means the usage for a hypothetial file now looks like this: `si cpp testfile.si testfile.cpp`, whereas before it looked like `si testfile.si testfile.cpp` It's the same with python, by the way, you just need to replace `cpp` with `py`: `si py testfile.si testfile.py`
 2. Sí will attempt to run the python script automatically, for a more (although not nearly perfect) python shell-like experience. *This only works with python3, not with anything younger.*
 3. As always, translations are still in development. The current list for python can be found [here](https://docs.google.com/document/d/1-K0fD7VggYoBeeeJRqcQnw3W_9d-RqdDuT5c9MRoZ8E/edit?usp=sharing)
 
