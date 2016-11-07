@@ -1,6 +1,3 @@
-### Sí
-##### A coding utility for native Spanish speakers
-
 ####Update:
 Sí 2.0 is up and running! Translation to and from python is now available. 
 Some things that are different about it:
@@ -9,6 +6,9 @@ Some things that are different about it:
 It's the same with python, by the way, you just need to replace `cpp` with `py`: `si py testfile.si testfile.py`
 2. Sí will attempt to run the python script automatically, for a more (although not nearly perfect) python shell-like experience. *This only works with python3, not with anything younger.*
 3. As always, translations are still in development. The current list for python can be found [here](https://docs.google.com/document/d/1-K0fD7VggYoBeeeJRqcQnw3W_9d-RqdDuT5c9MRoZ8E/edit?usp=sharing)
+
+### Sí
+##### A coding utility for native Spanish speakers
 
 Sí is a pseudo-programming language that serves as a Spanish-based alternative to C++, so that Spanish speakers can write code using Spanish keywords that make more sense to them than English ones do. This is especially useful for Spanish-speaking students who are learning to code for the first time, allowing them to learn to write programs without having to first understand English.
 
@@ -36,10 +36,6 @@ int main(vacío)
         volver 0;
 }
 ```
-
-#####Update:
-Python (and general multi-language) support for Sí is currently in development and should be released (tentatively) by the end of October! I'm planning for it to compile and run the script at runtime, so that you could run Sí on your code and have Python start executing your code automatically.
-Theoretically I could do the same with C and C++ code, but considering that compilation is manual in those languages and it isn't quite the same in Python, I'm thinking of leaving C and C++ as they are. 
 
 #####To Use:
 
