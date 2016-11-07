@@ -11,24 +11,26 @@ int main(int argc, char* argv[])
 {
         string outfile;
         Word word;
-
-        if (argc < 3) {
-                cerr << "Usage: si [py,cpp] origin.si [destination.cpp]" << endl;
-                exit(EXIT_FAILURE);
-        }
-
+        string type = "";
+        
         if (strncmp(argv[1], "cpp", 3) == 0) {
                 word.set_dict("dict_cpp.txt");
+                type = "cpp";
         }
         else if (strncmp(argv[1], "py", 3) == 0) {
                 word.set_dict("dict_py.txt");
+                type = "py";
         }
         else {
-                cerr << "ERROR: Specify file type (cpp or py)" << endl;
+                cerr << "Usage: si [py,cpp] origin.si [destination]" << endl;
                 exit(EXIT_FAILURE);
         }
 
-        if (argc == 3) {
+        if (argc < 3) {
+                cerr << "Usage: si [py,cpp] origin.si [destination]" << endl;
+                exit(EXIT_FAILURE);
+        }
+        else if (argc == 3) {
                 ifstream inputFile(argv[2]);
                 if (!inputFile) {
                         cerr << "ERROR: Input file could not be read." << endl;
@@ -54,6 +56,11 @@ int main(int argc, char* argv[])
         word.write();
 
         word.close_files();
+
+        if (type == "py") {
+                string out = "python3 " + outfile;
+                system(out.c_str());
+        }
 }
 
 /* if no destination file is provided, this will take the

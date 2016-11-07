@@ -1,4 +1,7 @@
-﻿abs abs
+﻿volver return
+no not
+en in
+abs abs
 dicc dict
 ayuda help
 min min
@@ -76,6 +79,7 @@ dejar quit
 salir exit
 si if
 si_no else
+sino elif
 para for
 mientras while
 haz do

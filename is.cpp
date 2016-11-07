@@ -9,12 +9,7 @@ string make_outfile(string namefile);
 int main(int argc, char* argv[])
 {
         Word word;
-
-        if (argc < 3) {
-                cerr << "Usage: is [py,cpp] origin.cpp [destination.si]" << endl;
-                exit(EXIT_FAILURE);
-        }
-       
+        
         if (strncmp(argv[1], "cpp", 3) == 0) {
                 word.set_dict("dict_cpp.txt");
         }
@@ -22,11 +17,15 @@ int main(int argc, char* argv[])
                 word.set_dict("dict_py.txt");
         }
         else {
-                cerr << "ERROR: Specify file type (cpp or py)" << endl;
+                cerr << "Usage: is [py,cpp] origin.cpp [destination.si]" << endl;
                 exit(EXIT_FAILURE);
         }
-        
-        if (argc == 3) {
+
+        if (argc < 3) {
+                cerr << "Usage: is [py,cpp] origin.cpp [destination.si]" << endl;
+                exit(EXIT_FAILURE);
+        }
+        else if (argc == 3) {
                 ifstream inputFile(argv[2]);
                 if (!inputFile) {
                         cerr << "ERROR: Input file could not be read." << endl;
