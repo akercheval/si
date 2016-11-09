@@ -57,7 +57,7 @@ locals locals
 repr repr
 zip zip
 compila compile
-globals globals
+globales globals
 mapa map
 invertido reversed
 importa import
