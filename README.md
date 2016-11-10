@@ -1,3 +1,5 @@
++### En español aca https://github.com/akercheval/si/blob/master/README_espa%C3%B1ol.md
+
 ####Update:
 Sí 2.0 is up and running! Translation to and from python is now available. 
 Some things that are different about it:
