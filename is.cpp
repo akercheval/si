@@ -11,10 +11,16 @@ int main(int argc, char* argv[])
         Word word;
         
         if (strncmp(argv[1], "cpp", 3) == 0) {
-                word.set_dict("dict_cpp.txt");
+                word.set_type("cpp");
+                word.set_dict("is");
         }
         else if (strncmp(argv[1], "py", 3) == 0) {
-                word.set_dict("dict_py.txt");
+                word.set_type("py");
+                word.set_dict("is");
+        }
+        else if (strncmp(argv[1], "c", 3) == 0) {
+                word.set_type("c");
+                word.set_dict("is");
         }
         else {
                 cerr << "Usage: is [py,cpp] origin.cpp [destination.si]" << endl;

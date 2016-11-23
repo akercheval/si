@@ -11,15 +11,18 @@ int main(int argc, char* argv[])
 {
         string outfile;
         Word word;
-        string type = "";
         
         if (strncmp(argv[1], "cpp", 3) == 0) {
-                word.set_dict("dict_cpp.txt");
-                type = "cpp";
+                word.set_type("cpp");
+                word.set_dict("si");
         }
         else if (strncmp(argv[1], "py", 3) == 0) {
-                word.set_dict("dict_py.txt");
-                type = "py";
+                word.set_type("py");
+                word.set_dict("si");
+        }
+        else if (strncmp(argv[1], "c", 3) == 0) {
+                word.set_type("c");
+                word.set_dict("si");
         }
         else {
                 cerr << "Usage: si [py,cpp] origin.si [destination]" << endl;
@@ -57,7 +60,7 @@ int main(int argc, char* argv[])
 
         word.close_files();
 
-        if (type == "py") {
+        if (strncmp(word.get_type().c_str(), "py", 3) == 0) {
                 string out = "python3 " + outfile;
                 system(out.c_str());
         }

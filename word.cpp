@@ -3,16 +3,43 @@
 #include <iostream>
 using namespace std;
 
-Word::Word(){}
+Word::Word()
+{
+        filetype = "";
+}
 
-void Word::set_dict(string file)
+void Word::set_type(string type)
+{
+        filetype = type;
+}
+
+string Word::get_type()
+{
+        return filetype;
+}
+
+void Word::set_dict(string direction)
 {
         // Initialize dictionary with all the translations
+        string file;
+
+        if ((filetype == "cpp") || (filetype == "c"))
+                file = "dict_cpp.txt";
+        else if (filetype == "py")
+                file = "dict_py.txt";
+        else {
+                cerr << "ERROR: improper or no filetype specified" << endl;
+                exit(EXIT_FAILURE);
+        }
+
         ifstream infile(file);
         string eng, esp;
         while(infile >> esp >> eng)
         {
-                dictionary.emplace(esp, eng);
+                if (direction == "si")
+                        dictionary.emplace(esp, eng);
+                else
+                        dictionary.emplace(eng, esp);
         }
 }
 
@@ -43,20 +70,29 @@ void Word::check_front()
                 com_check += word.front();
                 out << word.front();
                 word.erase(0,1);
-                if (com_check == "//") {
-                        ignore = true;
+                // ignores for Python
+                if (filetype == "py") {
+                        if (com_check == "#") {
+                                py_ignore = true;
+                        }
                 }
-                else if (com_check == "/*") {
-                        long_ignore = true;
-                }
-                else if (com_check == "*/" && long_ignore) {
-                        long_ignore = false;
-                } 
-                else if (com_check == "\x22" && !q_ignore) {
-                        q_ignore = true;
-                }
-                else if(com_check == "\x22" && q_ignore) {
-                        q_ignore = false;
+                // ignores for C and C++
+                else {
+                        if (com_check == "//") {
+                                ignore = true;
+                        }
+                        else if (com_check == "/*") {
+                                long_ignore = true;
+                        }
+                        else if (com_check == "*/" && long_ignore) {
+                                long_ignore = false;
+                        } 
+                        else if (com_check == "\x22" && !q_ignore) {
+                                q_ignore = true;
+                        }
+                        else if(com_check == "\x22" && q_ignore) {
+                                q_ignore = false;
+                        }
                 }
         }
 }
@@ -107,7 +143,7 @@ void Word::print_word()
                 word = wvec.front();
                 wvec.erase(wvec.begin());
 
-                if (long_ignore || q_ignore || ignore) {
+                if (long_ignore || q_ignore || ignore || py_ignore) {
                         out << word;
                 }
                 else 
@@ -116,22 +152,24 @@ void Word::print_word()
                 if (!symvec.empty()) {
                         sym = symvec.front();
                         out << sym;
-                        /* turn on and off ignores */
-                        if ((sym.find("\x22") != string::npos) 
-                             && !q_ignore)
-                                q_ignore = true;
-                        else if ((sym.find("/*") != string::npos) 
-                                  && !long_ignore)
-                                long_ignore = true;
-                        else if ((sym.find("//") != string::npos)
-                                  && !ignore)
-                                ignore = true;
-                        else if ((sym.find("*/") != string::npos)
-                             && long_ignore)
-                                long_ignore = false;
-                        else if ((sym.find("\x22") != string::npos)
-                                  && q_ignore)
-                                q_ignore = false;
+                        /* turn on and off ignores for C and C++ */
+                        if (filetype != "py") {
+                                if ((sym.find("\x22") != string::npos) 
+                                     && !q_ignore)
+                                        q_ignore = true;
+                                else if ((sym.find("/*") != string::npos) 
+                                          && !long_ignore)
+                                        long_ignore = true;
+                                else if ((sym.find("//") != string::npos)
+                                          && !ignore)
+                                        ignore = true;
+                                else if ((sym.find("*/") != string::npos)
+                                     && long_ignore)
+                                        long_ignore = false;
+                                else if ((sym.find("\x22") != string::npos)
+                                          && q_ignore)
+                                        q_ignore = false;
+                        }
                         symvec.erase(symvec.begin());
                 }
         }
@@ -149,9 +187,10 @@ void Word::print_word()
                 while(in.peek() == '\n'){
                         out << endl;
                         in.get();
-                        if (ignore) {
+                        if ((ignore) && (filetype != "py"))
                                 ignore = false;
-                        }
+                        else if ((py_ignore) && (filetype == "py"))
+                                py_ignore = false;
                 }
         }
 }

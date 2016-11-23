@@ -85,14 +85,14 @@ mientras while
 haz do
 romper break
 continuar continue
-interr switch
+escojer switch
 caso case
 pasa pass
 tope ceil
 copsigno copysign
 fabs fabs
 factorial factorial
-suelo floor
+inferior floor
 fmod fmod
 frexp frexp
 fsuma fsum
@@ -243,7 +243,7 @@ más add
 resta sub
 mul mul
 ciertadiv truediv
-suelodiv floordiv
+inferiordiv floordiv
 mod mod
 imov lshift
 dmov rshift
@@ -254,7 +254,7 @@ rmás radd
 rresta rsub
 rmul rmul
 rciertadiv rtruediv
-rsuelodiv rfloordiv
+rinferiordiv rfloordiv
 rmod rmod
 rdivmod rdivmod
 rpot rpow
@@ -267,7 +267,7 @@ imás iadd
 iresta isub
 imul imul
 iciertadiv itruediv
-isuelodiv ifloordiv
+iinferiordiv ifloordiv
 imod imod
 ipot ipow
 iimov ilshift

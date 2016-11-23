@@ -9,7 +9,9 @@ using namespace std;
 
 class Word {
         public:
-                void set_dict(string file);
+                void set_type(string filetype);
+                string get_type();
+                void set_dict(string direction);
                 void set_in(string new_in);
                 void set_out(string new_out);
                 void write();
@@ -18,6 +20,8 @@ class Word {
 
         private:
                 string word;
+                string filetype;
+                bool py_ignore = false;
                 bool ignore = false;
                 bool long_ignore = false;
                 bool q_ignore = false;
