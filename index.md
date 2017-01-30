@@ -1,4 +1,4 @@
-####Update:
+#### Update:
 Sí 2.0 is up and running! Translation to and from python is now available. 
 Some things that are different about it:
 
@@ -7,7 +7,7 @@ Some things that are different about it:
 3. As always, translations are still in development. The current list for python can be found [here](https://docs.google.com/document/d/1-K0fD7VggYoBeeeJRqcQnw3W_9d-RqdDuT5c9MRoZ8E/edit?usp=sharing)
 
 ### Sí
-##### A coding utility for native Spanish speakers
+#### A coding utility for native Spanish speakers
 
 Sí is a pseudo-programming language that serves as a Spanish-based alternative to C++ and Python, so that Spanish speakers can write code using Spanish keywords that make more sense to them than English ones do. This is especially useful for Spanish-speaking students who are learning to code for the first time, allowing them to learn to write programs without having to first understand English.
 
@@ -36,7 +36,7 @@ int main(vacío)
 }
 ```
 
-#####To Use:
+#### To Use:
 
 1. Clone the repository and compile with `make all`
 2. Add the Sí executable to your path if you want.
@@ -47,13 +47,13 @@ the executable isn't in your path).
 4. The file will be translated to English C++ or Python and can then be compiled and run.
 5. `make all` will also make an executable called `is`, which is `si`, but backwards. In other words, it translates C++ into Sí.
 
-#####Notes:
+#### Notes:
 
 * A full list of words and their translations can be found [here for C++](https://docs.google.com/document/d/1c7vxJ4XN6ZArNbPVxBXsT-MwcSWAqconURG9hyf_63w/edit?usp=sharing) and [here for Python](https://docs.google.com/document/d/1-K0fD7VggYoBeeeJRqcQnw3W_9d-RqdDuT5c9MRoZ8E/edit?usp=sharing)
 * This program is, because of Windows's weird ANSI encoding of accented characters (and my limited experience with dealing with it), only questionably compatible with Windows at the moment. But let's be real, why were you coding on Windows anyway? God knows how this would work on the Windows command prompt. I'd rather not think about it. Updates to come.
 * If you choose to only write some words in Spanish as opposed to all of them, that's chill too. The `si` command won't translate anything in English to Spanish.
 
-#####Planned updates:
+#### Planned updates:
 
 * More translations, of course.
 * Compatibility with other languages
