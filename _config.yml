@@ -2,7 +2,7 @@ title: Sí
 description: A coding solution for native Spanish speakers
 google_analytics: 
 show_downloads: true
-theme: jekyll-theme-tactile
+theme: jekyll-theme-midnight
 
 gems:
   - jekyll-mentions
