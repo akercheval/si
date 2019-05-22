@@ -1,3 +1,7 @@
+## Yikes, this just got a lot of traffic!
+Thanks, [reddit](https://www.reddit.com/r/programming/comments/bpda5u/til_there_are_a_lot_80_programming_languages/), for the buzz, I guess!
+##### This code is a cool proof of concept, but it's pretty crappy. [Espy](https://github.com/akercheval/espy) is better.
+
 ### En español [aquí](https://github.com/akercheval/si/blob/master/README_espa%C3%B1ol.md)
 
 #### Update:
@@ -5,7 +9,7 @@ Sí 2.0 is up and running! Translation to and from python is now available.
 Some things that are different about it:
 
 1. Now, you must specify which language you'd like to translate to and from. This means the usage for a hypothetial file now looks like this: `si cpp testfile.si testfile.cpp`, whereas before it looked like `si testfile.si testfile.cpp` It's the same with python, by the way, you just need to replace `cpp` with `py`: `si py testfile.si testfile.py`
-2. Sí will attempt to run the python script automatically, for a more (although not nearly perfect) python shell-like experience. *This only works with python3, not with anything younger.*
+2. Sí will attempt to run the python script automatically, for a more (although not nearly perfect) python shell-like experience. *This only works with python3, not with anything older.*
 3. As always, translations are still in development. The current list for python can be found [here](https://docs.google.com/document/d/1-K0fD7VggYoBeeeJRqcQnw3W_9d-RqdDuT5c9MRoZ8E/edit?usp=sharing)
 
 ### Sí
